@@ -6,13 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Treinamento</title>
     <link rel="stylesheet" href="./styles/main.css">
-  
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
+        crossorigin="anonymous"></script>
+
 </head>
 
 <body class="corpo" data-spy="scroll" data-target=".navbar" data-offset="50">
-  
-    <nav class="navbar navbar-expand-sm navbar-light bg-light" style="position: -webkit-sticky; position: sticky; top: 0; z-index: 5;">
-        <a href="https://www.ifmg.edu.br/ourobranco" class="navbar-brand shadow"><img src="https://i.imgur.com/khJroaC.jpg" alt="IFMGlogo" title="Go to IFMG" style="width: 60px; height: 66px;"></a>
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-light"
+        style="position: -webkit-sticky; position: sticky; top: 0; z-index: 5;">
+        <a href="https://www.ifmg.edu.br/ourobranco" class="navbar-brand shadow"><img
+                src="https://i.imgur.com/khJroaC.jpg" alt="IFMGlogo" title="Go to IFMG"
+                style="width: 60px; height: 66px;"></a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#menuList">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,7 +37,8 @@
                     <a href="./modApp.html" class="nav-link">MODIFICAR APP</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a href="#" id="navVoluntarios" class="nav-link dropdown-toggle" data-toggle="dropdown">VOLUNTÁRIOS</a>
+                    <a href="#" id="navVoluntarios" class="nav-link dropdown-toggle"
+                        data-toggle="dropdown">VOLUNTÁRIOS</a>
                     <div class="dropdown-menu">
                         <a href="./crudVoluntarios.html" class="dropdown-item">Gerenciamento de Voluntários</a>
                         <a href="./convocacaoVol.html" class="dropdown-item">Convocação de Voluntários</a>
@@ -79,7 +92,7 @@
         <div id="verificar">
             <form name="formLeitura" action="alterar.php" method="POST" autocomplete="on" class="need-validation ">
                 <!--tabela com todos os treinamentos-->
-                <div class="form-group container form-table bg-light mt-1 shadow table-responsive" >
+                <div class="form-group container form-table bg-light mt-1 shadow table-responsive">
                     <table class="table table-striped bg-ghostwhite table-hover table-bordered">
                         <thead>
                             <h1>Tabela de treinamentos</h1>
@@ -139,7 +152,7 @@
                             <!-- Modal Header -->
                             <div class="modal-header">
                                 <h4 class="modal-title">Exlusão</h4>
-                                <button type="button" class="close" data-dismiss="modal"&times;> </button>
+                                <button type="button" class="close" data-dismiss="modal" &times;> </button>
                             </div>
 
                             <!-- Modal body -->
