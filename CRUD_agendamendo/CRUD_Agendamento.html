@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento</title>
+    <link rel="stylesheet" href="../Estilo/estilos.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body class="corpo" data-spy="scroll" data-target=".navbar" data-offset="50">
+    
+    <!--Cabecalho da pagina-->
+    <div class="container-fluid cabecalho form-group">
+        <div style="-webkit-text-stroke-color: black; -webkit-text-stroke-width: 
+    thick; font-family: cursive; color: white;">
+            <h1 class="font-weight-bold">Agendamento</h1>
+            <p class="lead font-weight-bold" style="font-size: x-large;">Nessa página será possível
+                agendar um treinamento para os brigadistas</p>
+        </div>
+        <br>
+    </div>
+    <br>
+    
+    <div class="container bordinha bg-white p-3">
+        <form name="formCadastro" action="cadastro.php" method="POST" autocomplete="on" class="needs-validation">
+
+            <!--Lista de treinamentos existentes-->
+            <div class="dropdown form-group">
+                <label for="listCd" class="h2">Escolha o treinamento já cadastrado: </label>
+                <select multiple class="form-control" id="listCd" name="listaCadastro">
+                    <option class="btn-light">Brigadista Aéreo</option>
+                    <option class="btn-light">Primeiros socorros</option>
+                    <option class="btn-light">Resgate de animais</option>
+                </select>
+
+            </div>
+
+            <!--Inputs de data e hora-->
+            <div class="form-group" id="mostraDados">
+                <label for="calendario" class="h5">Data de agendamento</label>
+                <input type="date" name="calendario" id="calendario" class="form-control form-group">
+
+                <label for="hora" class="h5">Hora de agendamento</label>
+                <input type="time" name="hora" id="hora" class="form-control form-group">
+            </div>
+
+            <!--Botoes de agendamento e cancelamento-->
+            <div class="btn-group btn-group-lg divLT">
+                <button type="submit" class="btn btn-primary form-group mr-1">Agendar</button>
+                <button type="reset" class="btn btn-danger form-group ">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

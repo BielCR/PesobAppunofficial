@@ -1,0 +1,83 @@
+/*style de elementos da tabela*/
+table, th, td{
+    border: 2px solid black;
+    border-collapse: collapse;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 3px;
+}
+td{
+    padding: 8px;
+    text-align: center;
+    width:  90px;
+}
+tr{
+    font-weight: bold;
+}
+button{
+    background-color: transparent;
+    font-weight: bold;
+}
+button:hover{
+    background-color: gainsboro;
+}
+legend{
+    font-size: larger;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+fieldset{
+    width: max-content;
+}
+label{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+/*style de elementos da tabela*/
+        .cabecalho {
+            background-image: url(bg.jpg);
+            background-size: cover;
+            background-position: center;
+
+
+        }
+
+        .corpo {
+            background-color: rgba(15, 139, 36, 0.3);
+            /*background-image: linear-gradient(green, white);*/
+            width: 100%;
+            padding-bottom: 5%;
+
+        }
+
+        label,
+        .imi {
+             font-family: Arial, Helvetica, sans-serif;
+            font-style: normal;
+        }
+
+        td,
+        th {
+            padding: 3px;
+            text-align: center;
+            width: 40px;
+           font-weight: normal;
+        }
+
+        th {
+            font-weight: bold;
+            font-size: x-large;
+        }
+
+        div {
+            background-color: transparent;
+        }
+
+        nav {
+            background-color: lightgray;
+        }
+        .divLT{
+            width: 100%;
+        }
+
+        .bordinha{
+            border-radius: 30px;
+        }

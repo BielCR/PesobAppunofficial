@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento</title>
+    <link rel="stylesheet" href="../Estilo/estilos.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body class="corpo" data-spy="scroll" data-target=".navbar" data-offset="50">
+    <div class="container-fluid cabecalho">
+
+        <div class="container-fluid">
+            <!--Cabeçalho-->
+            <div style="-webkit-text-stroke-color: black; -webkit-text-stroke-width: 
+            thick; font-family: cursive; color: white;">
+                <h1 class="font-weight-bold">Treinamentos</h1>
+                <p class="lead font-weight-bold" style="font-size: x-large;">Nessa página será possível
+                    cadastrar e excluir os treinamentos da brigada</p>
+            </div>
+            <!--Barra de navegação-->
+
+            <ul class="nav nav-pills nav-justified">
+                <li class="nav-item " s>
+                    <a class="nav-link btn btn-light" href="#cadastro" style="color: black;">Cadastrar treinamento </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-light" href="#verificar" style="color: black;">Tabela de treinamentos</a>
+                </li>
+            </ul>
+
+        </div>
+        <br>
+    </div>
+    <br>
+    <div class="container bg-white bordinha p-2">
+        <!--div do cadastro-->
+        <div id="cadastro">
+            <h2>Cadastro de treinamento</h2>
+            <p>Preencha todos os campos</p>
+            <form name="formCadastro" action="inserir.php" method="POST" autocomplete="on" class="need-validation ">
+
+                <!--nome do treinamento-->
+                <div class="form-group ">
+                    <label for="txtNome">Nome do treinamento: </label>
+                    <input type="text" class="form-control" name="txtNome" id="txtNome" required
+                        placeholder="Insira o nome do treinamento">
+                </div>
+
+                <!--descrição do treinamento-->
+                <div class="form-group ">
+                    <label for="txtDescricao">Descrição do treinamento: </label>
+                    <textarea name="txtDescricao" id="txtDescricao" rows="5" class="form-control"
+                        placeholder="Insira a descrição do treinamento"></textarea>
+                </div>
+
+                <!--Pré requisitos-->
+                <div class="form-group ">
+                    <label for="txtPre">Pré requisitos</label>
+                    <input class="form-control" type="text" name="txtPre" id="txtPre" required
+                        placeholder="Insira os pré requisitos do treinamento">
+                </div>
+
+                <!--Botões-->
+                <div class="btn-group btn-group-lg divLT">
+                    <button type="submit" class="btn btn-primary form-group">Enviar</button>
+                    <button type="reset" class="btn btn-danger form-group ">Cancelar</button>
+                </div>
+            </form>
+        </div>
+        <br>
+
+        <!--Div de editar e enviar-->
+        <div id="verificar">
+            <form name="formLeitura" action="alterar.php" method="POST" autocomplete="on" class="need-validation ">
+                <!--tabela com todos os treinamentos-->
+                <div class="form-group container form-table">
+                    <table class="table table-striped bg-ghostwhite">
+                        <thead>
+                            <h1>Tabela de treinamentos</h1>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Alterar</th>
+                                <th scope="col">Excluir</th>
+                            </tr>
+                            <tr>
+                                <td>Brigadista Aéreo</td>
+                                <td>
+                                    <a href="Alterar.html" class="btn btn-info form-control" role="button">Alterar</a>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger form-control" data-toggle="modal"
+                                        data-target="#myModal">
+                                        Excluir
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Primeiros socorros</td>
+                                <td>
+                                    <a href="Alterar.html" class="btn btn-info form-control" role="button">Alterar</a>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger form-control" data-toggle="modal"
+                                        data-target="#myModal">
+                                        Excluir
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Resgate de animais</td>
+                                <td>
+                                    <a href="Alterar.html" class="btn btn-info form-control" role="button">Alterar</a>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger form-control" data-toggle="modal"
+                                        data-target="#myModal">
+                                        Excluir
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                </div>
+
+                <!--Modal de exclusão-->
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog modal-dialog-centered ">
+                        <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Exlusão</h4>
+                                <button type="button" class="close" data-dismiss="modal"&times;> </button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                Você confirma a exclusão desse treinamento?
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                    Excluir
+                                </button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                    Cancelar
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
