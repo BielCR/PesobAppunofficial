@@ -20,31 +20,32 @@
 </head>
 
 <body class="corpo" data-spy="scroll" data-target=".navbar" data-offset="50">
-    <div class="container-fluid cabecalho">
-
-        <div class="container-fluid">
-            <!--Cabeçalho-->
-            <div style="-webkit-text-stroke-color: black; -webkit-text-stroke-width: 
-            thick; font-family: cursive; color: white;">
-                <h1 class="font-weight-bold">Treinamentos</h1>
-                <p class="lead font-weight-bold" style="font-size: x-large;">Nessa página será possível
-                    cadastrar e excluir os treinamentos da brigada</p>
-            </div>
-            <!--Barra de navegação-->
-
-            <ul class="nav nav-pills nav-justified">
-                <li class="nav-item " s>
-                    <a class="nav-link btn btn-light" href="#cadastro" style="color: black;">Cadastrar treinamento </a>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light" style="position: -webkit-sticky; position: sticky; top: 0; z-index: 5;">
+        <a href="https://www.ifmg.edu.br/ourobranco" class="navbar-brand shadow"><img src="https://i.imgur.com/khJroaC.jpg" alt="IFMGlogo" title="Go to IFMG" style="width: 60px; height: 66px;"></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#menuList">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuList">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">MENU</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-light" href="#verificar" style="color: black;">Tabela de treinamentos</a>
+                    <a href="./modApp.html" class="nav-link">MODIFICAR APP</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" id="navVoluntarios" class="nav-link dropdown-toggle" data-toggle="dropdown">VOLUNTÁRIOS</a>
+                    <div class="dropdown-menu">
+                        <a href="./crudVoluntarios.html" class="dropdown-item">Gerenciamento de Voluntários</a>
+                        <a href="./convocacaoVol.html" class="dropdown-item">Convocação de Voluntários</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">TREINAMENTOS</a>
                 </li>
             </ul>
-
         </div>
-        <br>
-    </div>
-    <br>
+    </nav>
     <div class="container bg-white bordinha p-2">
         <!--div do cadastro-->
         <div id="cadastro">
@@ -86,8 +87,8 @@
         <div id="verificar">
             <form name="formLeitura" action="alterar.php" method="POST" autocomplete="on" class="need-validation ">
                 <!--tabela com todos os treinamentos-->
-                <div class="form-group container form-table">
-                    <table class="table table-striped bg-ghostwhite">
+                <div class="form-group container form-table bg-light mt-1 shadow table-responsive" >
+                    <table class="table table-striped bg-ghostwhite table-hover table-bordered">
                         <thead>
                             <h1>Tabela de treinamentos</h1>
                         </thead>
