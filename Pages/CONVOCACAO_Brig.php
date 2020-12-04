@@ -24,44 +24,9 @@
 
 <body>
     <!--Barra de navegação (1/2)-->
-    <nav class="navbar navbar-expand-sm navbar-light bg-light"
-        style="position: -webkit-sticky; position: sticky; top: 0; z-index: 5;">
-        <a href="https://www.ifmg.edu.br/ourobranco" class="navbar-brand shadow"><img
-                src="https://i.imgur.com/khJroaC.jpg" alt="IFMGlogo" title="Go to IFMG"
-                style="width: 60px; height: 66px;"></a>
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#menuList">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="menuList">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">MENU</a>
-                </li>
-                <li class="nav-item">
-                    <a href="./MOD_App.html" class="nav-link">MODIFICAR APP</a>
-                </li>
-                <li class="nav-item">
-                    <a href="./CRUD_Voluntarios.html" class="nav-link">VOLUNTÁRIOS</a>
-                </li>
-                <li class="nav-item">
-                    <a href="./CONVOCACAO_Brig.html" class="nav-link">CONVOCAÇÃO DE BRIGADISTAS</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" id="navTreinamentos" class="nav-link dropdown-toggle"
-                        data-toggle="dropdown">TREINAMENTOS</a>
-                    <div class="dropdown-menu">
-                        <a href="CRUD_Agendamento.html" class="dropdown-item">Agendamento de treinamentos</a>
-                        <a href="CRUD_Treinamento.html" class="dropdown-item">Gerenciamento de treinamentos</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="./GERADOR_QR.html" class="nav-link">GERADOR DE QR CODE</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <?php include "NAVBAR.html"; ?>
 
-    <!-- Corpo Principal (2/2) -->
+    <!--Corpo principal (2/2)-->
     <div class="container mt-3 py-2 bg-secondary rounded">
         <div class="row">
             <!-- Dados para a convocação -->
@@ -220,7 +185,7 @@
             <div class="col-md-5">
                 <div class="form-group mt-md-4">
                     <label for="txtDesc" class="fLabel ml-3" style="font-size: 25px;">Descrição</label>
-                    <textarea form="formulario" id="txtDesc" name="txtDesc" class="form-control" rows="10"></textarea>
+                    <textarea form="formulario" id="txtDesc" name="txtDesc" class="form-control" rows="10" placeholder="Insira uma descrição para a convocação"></textarea>
                 </div>
             </div>
         </div>

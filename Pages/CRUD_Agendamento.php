@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treinamento</title>
+    <title>Agendamento</title>
     <link rel="stylesheet" href="./styles/main.css">
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
@@ -15,103 +15,81 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
         integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
         crossorigin="anonymous"></script>
+
 </head>
 
 <body class="corpo" data-spy="scroll" data-target=".navbar" data-offset="50">
+    <!--Barra de navegação (1/2)-->
+    <?php include "NAVBAR.html"; ?>
 
-    <nav class="navbar navbar-expand-sm navbar-light bg-light"
-        style="position: -webkit-sticky; position: sticky; top: 0; z-index: 5;">
-        <a href="https://www.ifmg.edu.br/ourobranco" class="navbar-brand shadow"><img
-                src="https://i.imgur.com/khJroaC.jpg" alt="IFMGlogo" title="Go to IFMG"
-                style="width: 60px; height: 66px;"></a>
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#menuList">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="menuList">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">MENU</a>
-                </li>
-                <li class="nav-item">
-                    <a href="./MOD_App.html" class="nav-link">MODIFICAR APP</a>
-                </li>
-                <li class="nav-item">
-                    <a href="./CRUD_Voluntarios.html" class="nav-link">VOLUNTÁRIOS</a>
-                </li>
-                <li class="nav-item">
-                    <a href="./CONVOCACAO_Brig.html" class="nav-link">CONVOCAÇÃO DE BRIGADISTAS</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" id="navTreinamentos" class="nav-link dropdown-toggle"
-                        data-toggle="dropdown">TREINAMENTOS</a>
-                    <div class="dropdown-menu">
-                        <a href="CRUD_Agendamento.html" class="dropdown-item">Agendamento de treinamentos</a>
-                        <a href="CRUD_Treinamento.html" class="dropdown-item">Gerenciamento de treinamentos</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a href="./GERADOR_QR.html" class="nav-link">GERADOR DE QR CODE</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <!--Corpo principal (2/2)-->
+    <div class="container rounded bg-white p-3 mt-3">
+        <form name="formCadastro" action="cadastro.php" method="POST" autocomplete="on" class="needs-validation">
 
-    <div class="container bg-white rounded p-2 mt-3">
-        <!--div do cadastro-->
-        <div id="cadastro">
-            <h2>Cadastro de treinamento</h2>
-            <p>Preencha todos os campos</p>
-            <form name="formCadastro" action="inserir.php" method="POST" autocomplete="on" class="need-validation ">
-
-                <!--nome do treinamento-->
-                <div class="form-group ">
-                    <label for="txtNome">Nome do treinamento: </label>
-                    <input type="text" class="form-control" name="txtNome" id="txtNome" required
-                        placeholder="Insira o nome do treinamento">
+            <!--Lista de treinamentos existentes-->
+            <div class="dropdown dropright form-group">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropTreinamentos"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Treinamentos cadastrados</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-toggle="collapse" data-target="#inputDados">
+                    <a class="dropdown-item" href="#">Brigadista Aéreo</a>
+                    <a class="dropdown-item" href="#">Primeiros socorros</a>
+                    <a class="dropdown-item" href="#">Resgate de animais</a>
                 </div>
+            </div>
 
-                <!--descrição do treinamento-->
-                <div class="form-group ">
-                    <label for="txtDescricao">Descrição do treinamento: </label>
-                    <textarea name="txtDescricao" id="txtDescricao" rows="5" class="form-control"
-                        placeholder="Insira a descrição do treinamento"></textarea>
-                </div>
+            
+            <!--Inputs de data e hora-->
+           
+            <div class="form-group collapse" id="inputDados">
+                <h4>Agendamento do treinamento:</h4>
+                <label for="calendario" class="h5">Data de agendamento</label>
+                <input type="date" name="calendario" id="calendario" class="form-control form-group">
 
-                <!--Pré requisitos-->
-                <div class="form-group ">
-                    <label for="txtPre">Pré requisitos</label>
-                    <input class="form-control" type="text" name="txtPre" id="txtPre" required
-                        placeholder="Insira os pré requisitos do treinamento">
-                </div>
+                <label for="hora" class="h5">Hora de agendamento</label>
+                <input type="time" name="hora" id="hora" class="form-control form-group">
+            </div>
 
-                <!--Botões-->
-                <div class="btn-group btn-group-lg divLT">
-                    <button type="submit" class="btn btn-primary form-group">Enviar</button>
-                    <button type="reset" class="btn btn-danger form-group ">Cancelar</button>
-                </div>
-            </form>
-        </div>
-        <br>
-
-        <!--Div de editar e enviar-->
+            <!--Botoes de agendamento e cancelamento-->
+            <div class="btn-group btn-group-lg divLT">
+                <button type="submit" class="btn btn-primary form-group mr-1">Agendar</button>
+                <button type="reset" class="btn btn-danger form-group ">Cancelar</button>
+            </div>
+        </form>
         <div id="verificar">
             <form name="formLeitura" action="alterar.php" method="POST" autocomplete="on" class="need-validation ">
                 <!--tabela com todos os treinamentos-->
-                <div class="form-group container form-table mt-1 table-responsive">
+                <div class="form-group container form-table mt-3 table-responsive">
                     <table class="table table-striped bg-ghostwhite table-bordered">
                         <thead>
-                            <h1>Tabela de treinamentos</h1>
+                            <h1>Tabela de Agendamentos</h1>
                         </thead>
                         <tbody>
                             <tr>
                                 <th scope="col">Nome</th>
+                                <th scope="col">Data</th>
                                 <th scope="col">Alterar</th>
                                 <th scope="col">Excluir</th>
                             </tr>
                             <tr>
                                 <td>Brigadista Aéreo</td>
+                                <td>24/05/2021</td>
                                 <td>
-                                    <a href="Alterar_Treinamento.html" class="btn btn-info form-control"
+                                    <a href="Alterar_Agendamento.php" class="btn btn-info form-control"
+                                        role="button">Alterar</a>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger form-control" data-toggle="modal"
+                                        data-target="#myModal">
+                                        Excluir
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Brigadista Aéreo</td>
+                                <td>29/05/2021</td>
+                                <td>
+                                    <a href="Alterar_Agendamento.php" class="btn btn-info form-control"
                                         role="button">Alterar</a>
                                 </td>
                                 <td>
@@ -123,8 +101,9 @@
                             </tr>
                             <tr>
                                 <td>Primeiros socorros</td>
+                                <td>09/10/2021</td>
                                 <td>
-                                    <a href="Alterar_Treinamento.html" class="btn btn-info form-control"
+                                    <a href="Alterar_Agendamento.php" class="btn btn-info form-control"
                                         role="button">Alterar</a>
                                 </td>
                                 <td>
@@ -136,8 +115,9 @@
                             </tr>
                             <tr>
                                 <td>Resgate de animais</td>
+                                <td>13/11/2021</td>
                                 <td>
-                                    <a href="Alterar_Treinamento.html" class="btn btn-info form-control"
+                                    <a href="Alterar_Agendamento.php" class="btn btn-info form-control"
                                         role="button">Alterar</a>
                                 </td>
                                 <td>
@@ -165,7 +145,7 @@
 
                             <!-- Modal body -->
                             <div class="modal-body">
-                                Você confirma a exclusão desse treinamento?
+                                Você confirma a exclusão desse evento agendado?
                             </div>
 
                             <!-- Modal footer -->
