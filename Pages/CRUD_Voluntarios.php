@@ -91,7 +91,7 @@
                 </div>
                 <!--Cadastrar Novo Voluntário-->
                 <div id="novoVol" class="collapse fade ml-3 mt-1">
-                    <form action="" class="border rounded p-2 bg-light" method="POST">
+                    <form action="cadastrar_vol.php" class="border rounded p-2 bg-light" method="POST">
                         <div class="form-group">
                             <label for="nomeNovoVol" class="fLabel">Nome</label>
                             <input id="nomeNovoVol" name="nomeNovoVol" type="text" placeholder="Nome"
