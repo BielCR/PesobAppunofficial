@@ -18,7 +18,7 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body class="corpo" data-spy="scroll" data-target=".navbar" data-offset="50">
+<body>
     <!--Barra de navegação (1/2)-->
     <?php include "NAVBAR.html"; ?>
 
@@ -28,7 +28,7 @@
         <div id="cadastro">
             <h2>Cadastro de treinamento</h2>
             <p>Preencha todos os campos</p>
-            <form name="formCadastro" action="inserir.php" method="POST" autocomplete="on" class="need-validation ">
+            <form name="formCadastro" action="cadastrar_trei.php" method="POST" class="need-validation ">
 
                 <!--nome do treinamento-->
                 <div class="form-group ">
