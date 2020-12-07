@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
         hr {
             border-color: black;
         }
+
         /*#btSwitch{
             border-radius: 10px;
         }*/
@@ -20,11 +22,13 @@
             width: 60px;
             height: 34px;
         }
+
         .btSwitch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
+
         .btSlider {
             position: absolute;
             cursor: pointer;
@@ -36,6 +40,7 @@
             -webkit-transition: .4s;
             transition: .4s;
         }
+
         .btSlider:before {
             position: absolute;
             content: "";
@@ -47,25 +52,31 @@
             -webkit-transition: .4s;
             transition: .4s;
         }
-        input:checked + .btSlider {
+
+        input:checked+.btSlider {
             background-color: red;
         }
-        input:focus + .btSlider {
+
+        input:focus+.btSlider {
             box-shadow: 0 0 1px gray;
         }
-        input:checked + .btSlider:before {
+
+        input:checked+.btSlider:before {
             -webkit-transform: translateX(26px);
             -ms-transform: translateX(26px);
             transform: translateX(26px);
         }
+
         .btSlider.round {
             border-radius: 34px;
         }
+
         .btSlider.round:before {
             border-radius: 50%;
         }
     </style>
 </head>
+
 <body>
     <!--Barra de navegação (1/2)-->
     <?php include "NAVBAR.html"; ?>
@@ -75,7 +86,7 @@
         <div class="row">
             <div class="col-md-4">
                 <!--O seletor de telas do App-->
-                <h3 >Telas do App</h3>
+                <h3>Telas do App</h3>
                 <div class="dropdown">
                     <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Selecione uma Tela</button>
                     <div class="dropdown-menu">
@@ -180,7 +191,8 @@
                         </div>
                         <label class="fLabel" for="imagem">Selecione uma imagem (para ilustrar melhor o tópico)</label>
                         <input type="file" id="imagem" name="imagem" accept="image/png, image/jpeg, image/gif">
-                        <button type="submit" class="btn btn-success">Adicionar</button>
+                        <button type="submit" class="btn btn-success form-group" data-toggle="modal"
+                    data-target="#qrModal">Adicionar</button>
                     </form>
                 </div>
                 <!--Formulário de deletar tópicos-->
@@ -201,13 +213,41 @@
         </div>
     </div>
 
+    <!--Modal de qr Code-->
+    <div class="modal fade" id="qrModal">
+        <div class="modal-dialog modal-dialog-centered ">
+            <div class="modal-content">
+
+                <!-- Cabecalho do modal -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Tela adicionada com sucesso!</h4>
+                    <button type="button" class="close" data-dismiss="modal" &times;></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <p>Aqui está seu QR Code para a página</p>
+                    <img src="https://i.imgur.com/GsAruhf.png" alt="QRCODE" class="mw-100">
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer divLT">
+                    <button type="button" class="btn btn-primary form-control" data-dismiss="modal">
+                        Sair
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
     <!--Script para a ação do botão SWITCH-->
     <script>
         var switcher = document.getElementById('switcher');
         var x = false;
 
         switcher.addEventListener('click', function(event) {
-            if(x){
+            if (x) {
                 x = false;
                 $('#addTop').collapse('show');
                 $('#delTop').collapse('hide');
@@ -241,4 +281,5 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 </body>
+
 </html>
