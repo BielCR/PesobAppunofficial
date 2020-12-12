@@ -24,7 +24,7 @@
     <?php include "NAVBAR.html"; ?>
 
     <!--Corpo principal (2/2)-->
-    <div class="container mt-3 py-2 bg-secondary rounded">
+    <div class="container mt-3 py-2 bg-white rounded">
         <div class="row">
 
             <!--Tabela de voluntários/ Cadastrar novo voluntário-->
@@ -138,7 +138,7 @@
                                     <h2>Alterar Foto</h2>
                                     <button type="button" class="close" data-dismiss="modal">x</button>
                                 </div>
-                                <div class="modal-body bg-secondary">
+                                <div class="modal-body bg-white">
                                     <img style="width: 50%;" class="rounded shadow-lg border mx-auto d-block img-fluid"
                                         src="https://i.pinimg.com/originals/24/5a/e1/245ae17922e87954167a22bb77addf89.jpg"
                                         alt="foto do voluntário" title="Foto do Voluntário">
@@ -151,7 +151,7 @@
                                         <button type="submit" class="btn btn-warning d-block ml-auto">Alterar</button>
                                     </form>
                                 </div>
-                                <div class="modal-footer bg-secondary">
+                                <div class="modal-footer bg-white">
                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                                 </div>
                             </div>

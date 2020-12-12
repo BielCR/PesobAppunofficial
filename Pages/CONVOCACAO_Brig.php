@@ -28,7 +28,7 @@
     <?php include "NAVBAR.html"; ?>
 
     <!--Corpo principal (2/2)-->
-    <div class="container mt-3 py-2 bg-secondary rounded">
+    <div class="container mt-3 py-2 bg-white rounded">
         <div class="row">
             <!-- Dados para a convocação -->
             <div class="col-md-7">

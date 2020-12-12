@@ -82,7 +82,7 @@
     <?php include "NAVBAR.html"; ?>
 
     <!--Corpo principal (2/2)-->
-    <div class="container mt-3 bg-secondary py-2 rounded">
+    <div class="container mt-3 bg-white py-2 rounded">
         <div class="row">
             <div class="col-md-4">
                 <!--O seletor de telas do App-->
@@ -114,10 +114,10 @@
                                 <h2>Pre-visualização</h2>
                                 <button type="button" class="close" data-dismiss="modal">x</button>
                             </div>
-                            <div class="modal-body bg-secondary">
+                            <div class="modal-body bg-white">
                                 <img style="width: 85%; height: 85%;" class="rounded shadow-lg border mx-auto d-block img-fluid" src="https://i.imgur.com/ZldJXpD.png" alt="prototipoTelaInfo" title="Pre-visualização da Tela">
                             </div>
-                            <div class="modal-footer bg-secondary">
+                            <div class="modal-footer bg-white">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
                             </div>
                         </div>
