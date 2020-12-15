@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./styles/media/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../styles/media/favicon.ico" type="image/x-icon">
     <title>PESOB App</title>
-    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="../styles/main.css">
     <style>
         hr {
             border-color: black;
@@ -79,7 +79,7 @@
 
 <body>
     <!--Barra de navegação (1/2)-->
-    <?php include "NAVBAR.html"; ?>
+    <?php include "../NAVBAR.php" ?>
 
     <!--Corpo principal (2/2)-->
     <div class="container mt-3 bg-white py-2 rounded">
@@ -191,8 +191,7 @@
                         </div>
                         <label class="fLabel" for="imagem">Selecione uma imagem (para ilustrar melhor o tópico)</label>
                         <input type="file" id="imagem" name="imagem" accept="image/png, image/jpeg, image/gif">
-                        <button type="submit" class="btn btn-success form-group" data-toggle="modal"
-                    data-target="#qrModal">Adicionar</button>
+                        <button type="submit" class="btn btn-success form-group" data-toggle="modal" data-target="#qrModal">Adicionar</button>
                     </form>
                 </div>
                 <!--Formulário de deletar tópicos-->

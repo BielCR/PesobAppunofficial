@@ -6,22 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./styles/media/favicon.ico" type="image/x-icon">
     <title>Agendamento</title>
-    <link rel="stylesheet" href="./styles/main.css">
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
-        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 
 </head>
 
 <body class="corpo" data-spy="scroll" data-target=".navbar" data-offset="50">
     <!--Barra de navegação (1/2)-->
-    <?php include "NAVBAR.html"; ?>
+    <?php include "../NAVBAR.php" ?>
 
     <!--Corpo principal (2/2)-->
     <div class="container rounded bg-white p-3 mt-3">
@@ -29,8 +23,7 @@
 
             <!--Lista de treinamentos existentes-->
             <div class="dropdown dropright form-group">
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropTreinamentos"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropTreinamentos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Treinamentos cadastrados</button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-toggle="collapse" data-target="#inputDados">
                     <a class="dropdown-item" href="#">Brigadista Aéreo</a>
@@ -39,9 +32,9 @@
                 </div>
             </div>
 
-            
+
             <!--Inputs de data e hora-->
-           
+
             <div class="form-group collapse" id="inputDados">
                 <h4>Agendamento do treinamento:</h4>
                 <label for="calendario" class="h5">Data de agendamento</label>
@@ -76,12 +69,10 @@
                                 <td>Brigadista Aéreo</td>
                                 <td>24/05/2021</td>
                                 <td>
-                                    <a href="Alterar_Agendamento.php" class="btn btn-info form-control"
-                                        role="button">Alterar</a>
+                                    <a href="Alterar_Agendamento.php" class="btn btn-info form-control" role="button">Alterar</a>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger form-control" data-toggle="modal"
-                                        data-target="#myModal">
+                                    <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#myModal">
                                         Excluir
                                     </button>
                                 </td>
@@ -90,12 +81,10 @@
                                 <td>Brigadista Aéreo</td>
                                 <td>29/05/2021</td>
                                 <td>
-                                    <a href="Alterar_Agendamento.php" class="btn btn-info form-control"
-                                        role="button">Alterar</a>
+                                    <a href="Alterar_Agendamento.php" class="btn btn-info form-control" role="button">Alterar</a>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger form-control" data-toggle="modal"
-                                        data-target="#myModal">
+                                    <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#myModal">
                                         Excluir
                                     </button>
                                 </td>
@@ -104,12 +93,10 @@
                                 <td>Primeiros socorros</td>
                                 <td>09/10/2021</td>
                                 <td>
-                                    <a href="Alterar_Agendamento.php" class="btn btn-info form-control"
-                                        role="button">Alterar</a>
+                                    <a href="Alterar_Agendamento.php" class="btn btn-info form-control" role="button">Alterar</a>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger form-control" data-toggle="modal"
-                                        data-target="#myModal">
+                                    <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#myModal">
                                         Excluir
                                     </button>
                                 </td>
@@ -118,12 +105,10 @@
                                 <td>Resgate de animais</td>
                                 <td>13/11/2021</td>
                                 <td>
-                                    <a href="Alterar_Agendamento.php" class="btn btn-info form-control"
-                                        role="button">Alterar</a>
+                                    <a href="Alterar_Agendamento.php" class="btn btn-info form-control" role="button">Alterar</a>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-danger form-control" data-toggle="modal"
-                                        data-target="#myModal">
+                                    <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#myModal">
                                         Excluir
                                     </button>
                                 </td>

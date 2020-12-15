@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./styles/media/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../styles/media/favicon.ico" type="image/x-icon">
     <title>PESOB App</title>
-    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="../styles/main.css">
     <style>
         hr {
             border-color: black;
@@ -25,7 +25,7 @@
 
 <body>
     <!--Barra de navegação (1/2)-->
-    <?php include "NAVBAR.html"; ?>
+    <?php include "../NAVBAR.php" ?>
 
     <!--Corpo principal (2/2)-->
     <div class="container mt-3 py-2 bg-white rounded">
@@ -39,7 +39,7 @@
                         <!-- Seleção de treinamento -->
                         <div class="form-group">
                             <label for="divCheckTreino" class="fLabel" style="font-size: 25px;">Treinamento(s)</label>
-                            <div id="divCheckTreino" style="margin-left: 10pt;"> 
+                            <div id="divCheckTreino" style="margin-left: 10pt;">
                                 <div class="form-check-inline">
                                     <label class="form-check-label">
                                         <input class="form-check-input" type="checkbox" name="checkTreino" id="checkTreino" value="abafador">Abafador
@@ -192,8 +192,7 @@
         </div>
         <hr>
         <!-- Botão para confirmar a convocação -->
-        <button style="height: 50px;" class="btn btn-success w-50 d-block mx-auto" type="submit"
-            form="formulario">CONVOCAR</button>
+        <button style="height: 50px;" class="btn btn-success w-50 d-block mx-auto" type="submit" form="formulario">CONVOCAR</button>
     </div>
 
     <!-- Scripts -->
@@ -201,22 +200,15 @@
     <script>
         function selecionarTudo(source) {
             var checkboxes = document.getElementsByName('checkBrig');
-            for(var c = 0; c < checkboxes.length; c++){
+            for (var c = 0; c < checkboxes.length; c++) {
                 checkboxes[c].checked = source.checked;
             }
         }
-
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-        crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
-        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 </body>
 
 </html>

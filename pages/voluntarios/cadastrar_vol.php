@@ -18,4 +18,3 @@
         //Volta a pagina mantendo o historico do usuario
         echo "<script>window.history.back()</script>";
     }
-?>
