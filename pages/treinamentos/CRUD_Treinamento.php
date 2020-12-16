@@ -123,7 +123,7 @@
 
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                            <button name="excluirBtn" id="excluirBtn" type="submit" class="btn btn-danger" data-dismiss="modal" onclick="window.location= 'excluir_trei.php?idTrei=' recipi    ">
+                            <button name="excluirBtn" id="excluirBtn" type="submit" class="btn btn-danger" data-dismiss="modal" onclick="window.location= 'excluir_trei.php?idTrei='">
                                 Excluir
                             </button>
                             <button type="button" class="btn btn-primary" data-dismiss="modal">
