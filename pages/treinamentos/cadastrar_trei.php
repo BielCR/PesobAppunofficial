@@ -8,7 +8,7 @@ $descricao = $_POST["txtDescricao"];
 $preRequisitos = $_POST["txtPre"];
 
 //Insercao com o Banco
-$SQL = "INSERT INTO treinamentos (nomeTreinamento, descricaoTreinamento, preReq)
+$SQL = "INSERT INTO tbtreinamentos (nomeTreinamento, descricaoTreinamento, preReq)
      VALUES ('" . utf8_decode($nome) . "', '" . $descricao . "', ' . $preRequisitos')";
 
 if ($con->query($SQL) == true) {
