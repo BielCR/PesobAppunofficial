@@ -2,58 +2,73 @@
 
 <html lang="pt-br">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="../styles/media/favicon.ico" type="image/x-icon">
-        <title>Treinamento</title>
-        <link rel="stylesheet" href="../styles/main.css">
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../styles/media/favicon.ico" type="image/x-icon">
+    <title>Treinamento</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $('#modalExclusao').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget)
+            var recipientId = button.data('id')
+            var modal = $(this)
+            modal.find('#id').val(recipientId)
+        })
+    </script>
 
-    <body>
-        <!--Barra de navegação (1/2)-->
+</head>
 
-        <?php include "../NAVBAR.php" ?>
+<body>
+    <!--Barra de navegação (1/2)-->
 
-        <!--Corpo principal (2/2)-->
-        <div id="principal" class="container bg-white rounded p-2 mt-3">
-            <!--div do cadastro-->
-            <div id="cadastro">
-                <h2>Cadastro de treinamento</h2>
-                <p>Preencha todos os campos</p>
-                <form name="formCadastro" action="cadastrar_trei.php" method="POST" class="need-validation ">
+    <?php include "../NAVBAR.php" ?>
 
-                    <!--nome do treinamento-->
-                    <div class="form-group ">
-                        <label for="txtNome">Nome do treinamento: </label>
-                        <input type="text" class="form-control" name="txtNome" id="txtNome" required placeholder="Insira o nome do treinamento">
-                    </div>
+    <!--Corpo principal (2/2)-->
+    <div id="principal" class="container bg-white rounded p-2 mt-3">
+        <!--div do cadastro-->
+        <div id="cadastro">
+            <h2>Cadastro de treinamento</h2>
+            <p>Preencha todos os campos</p>
+            <form name="formCadastro" action="cadastrar_trei.php" method="POST" class="need-validation ">
 
-                    <!--descrição do treinamento-->
-                    <div class="form-group ">
-                        <label for="txtDescricao">Descrição do treinamento: </label>
-                        <textarea name="txtDescricao" id="txtDescricao" rows="5" class="form-control" placeholder="Insira a descrição do treinamento"></textarea>
-                    </div>
+                <!--nome do treinamento-->
+                <div class="form-group ">
+                    <label for="txtNome">Nome do treinamento: </label>
+                    <input type="text" class="form-control" name="txtNome" id="txtNome" required placeholder="Insira o nome do treinamento">
+                </div>
 
-                    <!--Pré requisitos-->
-                    <div class="form-group ">
-                        <label for="txtPre">Pré requisitos</label>
-                        <input class="form-control" type="text" name="txtPre" id="txtPre" required placeholder="Insira os pré requisitos do treinamento">
-                    </div>
+                <!--descrição do treinamento-->
+                <div class="form-group ">
+                    <label for="txtDescricao">Descrição do treinamento: </label>
+                    <textarea name="txtDescricao" id="txtDescricao" rows="5" class="form-control" placeholder="Insira a descrição do treinamento"></textarea>
+                </div>
 
-                    <!--Botões-->
-                    <div class="btn-group btn-group-lg divLT">
-                        <button type="submit" class="btn btn-primary form-group">Enviar</button>
-                        <button type="reset" class="btn btn-danger form-group ">Cancelar</button>
-                    </div>
-                </form>
-            </div>
-            <!--</cadastro>-->
-            <br>
+                <!--Pré requisitos-->
+                <div class="form-group ">
+                    <label for="txtPre">Pré requisitos</label>
+                    <input class="form-control" type="text" name="txtPre" id="txtPre" required placeholder="Insira os pré requisitos do treinamento">
+                </div>
 
+                <!--Botões-->
+                <div class="btn-group btn-group-lg divLT">
+                    <button type="submit" class="btn btn-primary form-group">Enviar</button>
+                    <button type="reset" class="btn btn-danger form-group ">Cancelar</button>
+                </div>
+            </form>
+        </div>
+        <!--</cadastro>-->
+        <br>
+
+
+
+
+
+
+        <form name="formexclusao" action="excluir_tei.php" method="POST">
 
             <?php
             //inlcui o arquivo de conexão
@@ -67,32 +82,31 @@
             ?>
             <p class="h4">Tabela de treinamentos</p>
             <table class="table table-striped bg-ghostwhite table-bordered">
-            <tr> 
-                <th>Nome</th>
-                <th>Alterar</th> 
-                <th>Excluir</th>;
+                <tr>
+                    <th>Nome</th>
+                    <th>Alterar</th>
+                    <th>Excluir</th>
+                </tr>
                 <!--enquanto existir registro na consulta, exibe os -->
-                <?php while ($exibir = $query->fetch_assoc()) {
-                    //atribui os dados retornados a variáveis comuns
-                    $nmTrei = utf8_encode($exibir["nomeTreinamento"]);
-                    //continua construindo a variável com o html
-                    ?>
+                <?php
+                while ($exibir = $query->fetch_assoc()) {
+                ?>
                     <tr>
-                        <td><?php $nmTrei ?></td>
-                        <td> 
-                            <a href="Alterar_Treinamento.php?idCat=<?php echo $exibir["idCategoria"]?>" 
-                            class="btn btn-info form-control" role="button">Alterar</a>
+                        <td><?php echo $exibir["nomeTreinamento"] ?></td>
+                        <td>
+                            <a href="Alterar_Treinamento.php?idCat=<?php echo $exibir["idTreinamento"] ?>" class="btn btn-info form-control" role="button">Alterar</a>
                         </td>
                         <td>
-                            <button type="button" class="btn btn-danger form-control" data-toggle="modal" 
-                            data-target="#myModal">Excluir</button>
-                        </td>";
+                            <a class="btn btn-danger form-control" role="button" data-toggle="modal" data-target="#modalExclusao" data-id="<?php echo $exibir["idTreinamento"]; ?>"> Excluir</a>
+                        </td>
                     </tr>
+                <?php
                 }
-            </tr>
-            </table>";
+                ?>
+            </table>
+
             <!--Modal de exclusão-->
-            <div class="modal fade" id="myModal">
+            <div class="modal fade" id="modalExclusao">
                 <div class="modal-dialog modal-dialog-centered ">
                     <div class="modal-content">
 
@@ -109,7 +123,7 @@
 
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">
+                            <button name="excluirBtn" id="excluirBtn" type="submit" class="btn btn-danger" data-dismiss="modal" onclick="window.location= 'excluir_trei.php?idTrei=' recipi    ">
                                 Excluir
                             </button>
                             <button type="button" class="btn btn-primary" data-dismiss="modal">
@@ -120,10 +134,11 @@
                     </div>
                 </div>
             </div>
+        </form>
 
 
-            <?php
-            /*
+        <?php
+        /*
             <!--Div de editar e enviar-->
             <div id="verificar">
                 <form name="formLeitura" action="alterar.php" method="POST" autocomplete="on" class="need-validation ">
@@ -181,7 +196,8 @@
                 </form>
             </div>
             */
-            ?>
-        </div>
-    </body>
+        ?>
+    </div>
+</body>
+
 </html>
