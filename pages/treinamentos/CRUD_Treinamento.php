@@ -27,13 +27,6 @@ include "../conexao.php";
             window.location = 'excluir_trei.php?id=' + id;
         }
     </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            setInterval(function() {
-                $('#excluir').fadeOut(1500);
-            }, 5000);
-        });
-    </script>
 
 </head>
 
@@ -83,7 +76,7 @@ include "../conexao.php";
 
             <?php
             //definição do comando sql para a consulta
-            $SQL = "SELECT * FROM tbtreinamentos ORDER BY nomeTreinamento";
+            $SQL = "SELECT * FROM tbtreinamentos ORDER BY idTreinamento";
             //executa o comando sql
             $query = $con->query($SQL);
             ?>
@@ -151,68 +144,6 @@ include "../conexao.php";
                 </div>
             </div>
         
-
-
-        <?php
-        /*
-            <!--Div de editar e enviar-->
-            <div id="verificar">
-                <form name="formLeitura" action="alterar.php" method="POST" autocomplete="on" class="need-validation ">
-                    <!--tabela com todos os treinamentos-->
-                    <div class="form-group container form-table mt-1 table-responsive">
-                        <table class="table table-striped bg-ghostwhite table-bordered">
-                            <thead>
-                                <h1>Tabela de treinamentos</h1>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">Alterar</th>
-                                    <th scope="col">Excluir</th>
-                                </tr>
-                                <tr>
-                                    <td>Brigadista Aéreo</td>
-                                    <td>
-                                        <a href="Alterar_Treinamento.php" class="btn btn-info form-control" role="button">Alterar</a>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#myModal">
-                                            Excluir
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Primeiros socorros</td>
-                                    <td>
-                                        <a href="Alterar_Treinamento.php" class="btn btn-info form-control" role="button">Alterar</a>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#myModal">
-                                            Excluir
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Resgate de animais</td>
-                                    <td>
-                                        <a href="Alterar_Treinamento.php" class="btn btn-info form-control" role="button">Alterar</a>
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#myModal">
-                                            Excluir
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <br>
-                    </div>
-
-                    
-                </form>
-            </div>
-            */
-        ?>
     </div>
 </body>
 

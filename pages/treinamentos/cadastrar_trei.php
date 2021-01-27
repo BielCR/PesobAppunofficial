@@ -7,15 +7,19 @@ $nome = $_POST["txtNome"];
 $descricao = $_POST["txtDescricao"];
 $preRequisitos = $_POST["txtPre"];
 
+
 //Insercao com o Banco
 $SQL = "INSERT INTO tbtreinamentos (nomeTreinamento, descricaoTreinamento, preReq)
-     VALUES ('" . utf8_decode($nome) . "', '" . $descricao . "', ' . $preRequisitos')";
+     VALUES ('" . utf8_decode($nome) . "', '" . utf8_decode($descricao) . "
+     ', '" . utf8_decode($preRequisitos) . "')";
+
+     $con->query($SQL) or die($con->error);
 
 if ($con->query($SQL) == true) {
 ?>
     <script>
         alert('Cadastro de treinamento realizado com sucesso!');
-        window.location = 'CRUD_Treinamento.php';
+       window.location = 'CRUD_Treinamento.php';
     </script>
 <?php
 } else {
@@ -23,7 +27,7 @@ if ($con->query($SQL) == true) {
     <script>
         alert("Erro no cadastro! ' . $con->error . '");
         //Volta a pagina mantendo o historico do usuario
-        window.history.back();
+        //window.location = 'CRUD_Treinamento.php';
     </script>
 <?php
 }
