@@ -1,3 +1,7 @@
+<?php 
+    //inlcui o arquivo de conexão
+    include "../conexao.php";
+?>
 <!DOCTYPE html>
 
 <html lang="pt-br">
@@ -71,8 +75,6 @@
         <form name="formexclusao" action="excluir_tei.php" method="POST">
 
             <?php
-            //inlcui o arquivo de conexão
-            include "../conexao.php";
             //definição do comando sql para a consulta
             $SQL = "SELECT * FROM tbtreinamentos ORDER BY nomeTreinamento";
             //executa o comando sql
