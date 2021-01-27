@@ -9,4 +9,9 @@
     $senha = "bruno_gabriel";
     $nomeBD = "bruno_gabriel";
     $con = new mysqli($servidor, $usuario, $senha, $nomeBD);
+
+    //Verificando a conexão
+    if ($con->connect_error) {
+	    die("Falha na conexão: " . $conn->connect_error);
+	} 
 ?>

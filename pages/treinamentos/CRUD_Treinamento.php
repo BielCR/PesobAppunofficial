@@ -1,6 +1,6 @@
-<?php 
-    //inlcui o arquivo de conexão
-    include "../conexao.php";
+<?php
+//inlcui o arquivo de conexão
+include "../conexao.php";
 ?>
 <!DOCTYPE html>
 
@@ -16,12 +16,23 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     <script type="text/javascript">
-        $('#modalExclusao').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var recipientId = button.data('id')
-            var modal = $(this)
-            modal.find('#id').val(recipientId)
-        })
+        var idTreinamento = "";
+
+        function mensagemApagarRegistro(id, nome) {
+            document.getElementById('mensagem').innerHTML = "Deseja apagar o treinameno: " + id + " = " + nome;
+            idTreinamento = id; //Variável que guarda o id do registro a ser excluído.
+        }
+
+        function apagarRegistro(id) {
+            window.location = 'excluir_trei.php?id=' + id;
+        }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            setInterval(function() {
+                $('#excluir').fadeOut(1500);
+            }, 5000);
+        });
     </script>
 
 </head>
@@ -67,21 +78,17 @@
         <!--</cadastro>-->
         <br>
 
-
-
-
-
-
-        <form name="formexclusao" action="excluir_tei.php" method="POST">
+        <!--Listando os treinamentos colsultados no banco-->
+        <form name="listaTreinamentos" action="CRUD_Treinamento.php" method="GET">
 
             <?php
             //definição do comando sql para a consulta
             $SQL = "SELECT * FROM tbtreinamentos ORDER BY nomeTreinamento";
             //executa o comando sql
             $query = $con->query($SQL);
-
-            //cria uma variável para armazenar o html que vai gerar o pdf
             ?>
+
+
             <p class="h4">Tabela de treinamentos</p>
             <table class="table table-striped bg-ghostwhite table-bordered">
                 <tr>
@@ -96,17 +103,22 @@
                     <tr>
                         <td><?php echo $exibir["nomeTreinamento"] ?></td>
                         <td>
-                            <a href="Alterar_Treinamento.php?idCat=<?php echo $exibir["idTreinamento"] ?>" class="btn btn-info form-control" role="button">Alterar</a>
+                            <a href="Alterar_Treinamento.php?idCat=<?php echo $exibir["idTreinamento"] ?>" 
+                            class="btn btn-info form-control" role="button">Alterar</a>
                         </td>
                         <td>
-                            <a class="btn btn-danger form-control" role="button" data-toggle="modal" data-target="#modalExclusao" data-id="<?php echo $exibir["idTreinamento"]; ?>"> Excluir</a>
+                            <a href="#" class="btn btn-danger form-control" role="button" data-toggle="modal"
+                            data-target="#modalExclusao" onclick= "mensagemApagarRegistro('<?php echo $exibir['idTreinamento'];?>'
+                            ,'<?php echo $exibir['nomeTreinamento'];?>')" title = "Excluir Treinamento">Excluir</a> 
+                           
                         </td>
                     </tr>
                 <?php
                 }
                 ?>
             </table>
-
+            </form>
+            
             <!--Modal de exclusão-->
             <div class="modal fade" id="modalExclusao">
                 <div class="modal-dialog modal-dialog-centered ">
@@ -114,18 +126,20 @@
 
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title">Exlusão</h4>
+                            <h4 class="modal-title">Exclusão</h4>
                             <button type="button" class="close" data-dismiss="modal" &times;> </button>
                         </div>
 
                         <!-- Modal body -->
-                        <div class="modal-body">
+                        <div class="modal-body" id="mensagem">
                             Você confirma a exclusão desse treinamento?
                         </div>
 
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                            <button name="excluirBtn" id="excluirBtn" type="submit" class="btn btn-danger" data-dismiss="modal" onclick="window.location= 'excluir_trei.php?idTrei='">
+                            <button name="excluirBtn" id="excluirBtn" 
+                            type="submit" class="btn btn-danger" data-dismiss="modal" 
+                            onclick="apagarRegistro(idTreinamento);">
                                 Excluir
                             </button>
                             <button type="button" class="btn btn-primary" data-dismiss="modal">
@@ -136,7 +150,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        
 
 
         <?php
