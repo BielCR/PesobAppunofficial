@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(https://i.imgur.com/lH78JHc.png);
+}
+
+label.fLabel {
+    font-weight: bold;
+}
+
+
+@import "node_modules/bootstrap/scss/bootstrap"
