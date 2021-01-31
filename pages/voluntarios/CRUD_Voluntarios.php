@@ -34,60 +34,7 @@
                 <button id="btNovoVolunt" type="button" class="btn btn-outline-success">Novo Voluntário</button>
                 <!--Tabela de Voluntários-->
                 <div id="tbVol" class="collapse fade show bg-light ml-3 mt-1 shadow table-responsive">
-                    <table class="table table-bordered table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>E-mail</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="table-secondary">
-                                <td>Bruno de Paula Santos e Santos</td>
-                                <td>raktufin@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>Gabriel Cezar Rodrigues</td>
-                                <td>gabrielcz@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>Yasmin Ank</td>
-                                <td>yasmin@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>Cavalo</td>
-                                <td>minhaeguinha.pocoto@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>Geraldo</td>
-                                <td>geraldo@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>Geraldo</td>
-                                <td>geraldo@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>Geraldo</td>
-                                <td>geraldo@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>Geraldo</td>
-                                <td>geraldo@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>Geraldo</td>
-                                <td>geraldo@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>Geraldo</td>
-                                <td>geraldo@gmail.com</td>
-                            </tr>
-                            <tr>
-                                <td>Geraldo</td>
-                                <td>geraldo@gmail.com</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <?php include "./tabela_vol.php"?>
                 </div>
                 <!--Cadastrar Novo Voluntário-->
                 <div id="novoVol" class="collapse fade ml-3 mt-1">
@@ -147,32 +94,200 @@
                         </div>
                     </div>
                     <!--Botão que irá excluir um voluntário pelos dados que estão nos inputs ou seleção de tabela-->
-                    <button id="btDel" type="button" class="btn btn-danger mr-auto h-50 align-self-center">Deletar</button>
+                    <button id="btDel" type="button" class="btn btn-danger mr-auto h-50 align-self-center" onclick="delVoluntario()">Deletar</button>
                 </div>
                 <div>
-                    <form action="" method="POST">
-                        <div class="form-group">
-                            <label class="fLabel" for="infoNome">Nome</label>
-                            <input id="infoNome" name="infoNome" type="text" value="Bruno de Paula Santos e Santos" class="form-control" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label class="fLabel" for="infoEmail">E-mail</label>
-                            <input id="infoEmail" name="infoEmail" type="text" value="raktufin@gmail.com" class="form-control" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label class="fLabel" for="infoSenha">Senha</label>
-                            <input id="infoSenha" name="infoSenha" type="password" value="123456" class="form-control" disabled>
-                        </div>
-                        <div id="confirmarEdit" class="collapse">
-                            <button type="submit" class="btn btn-success ml-auto d-block">Confirmar</button>
-                        </div>
-                    </form>
+                    <div class="form-group">
+                        <label class="fLabel" for="infoNome">Nome</label>
+                        <input id="infoNome" name="infoNome" type="text" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label class="fLabel" for="infoEmail">E-mail</label>
+                        <input id="infoEmail" name="infoEmail" type="text" class="form-control" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label class="fLabel" for="infoSenha">Senha</label>
+                        <input id="infoSenha" name="infoSenha" type="password" class="form-control" disabled>
+                    </div>
+                    <div id="confirmarEdit" class="collapse">
+                        <button type="button" class="btn btn-success ml-auto d-block" onclick="editarVoluntario()">Confirmar</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <!--Scripts-->
+    <!--Script de atualizacao dos campos pelo clique na tabela-->
+    <!-- Scripts de Edicao e Delecao -->
+    <script>
+        var voluntarioSelecionado;
+
+        var tabela = document.getElementById('tabelaVolunts');
+        var linhas = tabela.getElementsByTagName('tr');
+
+        for(var c = 0; c < linhas.length; c++) {
+            var linha = linhas[c];
+            linha.addEventListener('click', function(event) {
+                attCampos(this);
+            });
+        }
+
+        //Função para criar um objeto XMLHTTPRequest
+        function CriaRequest() {
+            try{
+                request = new XMLHttpRequest();
+            }catch (IEAtual){
+
+                try{
+                    request = new ActiveXObject("Msxml2.XMLHTTP");
+                }catch(IEAntigo){
+
+                    try{
+                        request = new ActiveXObject("Microsoft.XMLHTTP");
+                    }catch(falha){
+                        request = false;
+                    }
+                }
+            }
+
+            if (!request)
+                alert("Seu Navegador não suporta Ajax!");
+            else
+                return request;
+        }
+
+        //Função para receber os dados e alterar os campos
+        function attCampos(linha) {
+            var colunas = linha.getElementsByTagName('td');
+
+            //Passa-se o email pois ele e um campo unico
+            var emailVol = colunas[1].innerHTML;
+            var xmlreq = CriaRequest();
+
+            // Iniciar uma requisição
+            xmlreq.open("GET", "sel_Voluntario.php?emailVol=" + emailVol, true);
+
+            // Atribui uma função para ser executada sempre que houver uma mudança de ado
+            xmlreq.onreadystatechange = function(){
+                var voluntario;
+
+                // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
+                if (xmlreq.readyState == 4) {
+
+                    // Verifica se o arquivo foi encontrado com sucesso
+                    if (xmlreq.status == 200) {
+                        voluntario = xmlreq.responseText;
+                        attInputs(voluntario);
+                    }else{
+                        let x = "Erro: " + xmlreq.statusText;
+                        window.alert(x);
+                    }
+                }
+            };
+            xmlreq.send();
+        }
+
+        function attInputs(volunt) {
+            //Variável que guarda os dados do voluntario selecionado
+            voluntarioSelecionado = volunt.split("|");
+
+            //Atualizar campos de nome e email e senha
+            document.getElementById('infoNome').value = voluntarioSelecionado[1];
+            document.getElementById('infoEmail').value = voluntarioSelecionado[2];
+            document.getElementById('infoSenha').value = voluntarioSelecionado[3];
+        }
+
+        //Funcao que verifica e chama o php responsavel pela edicao no BD
+        function editarVoluntario() {
+            var nomeForm = document.getElementById('infoNome');
+            var emailForm = document.getElementById('infoEmail');
+            var senhaForm = document.getElementById('infoSenha');
+
+            var dados = `infoId=${voluntarioSelecionado[0]}&infoNome=${nomeForm.value}&infoEmail=${emailForm.value}&infoSenha=${senhaForm.value}`;
+
+            //Se nao houve modificacao de senha
+            if(senhaForm.value == voluntarioSelecionado[3]) {
+                var xmlreq = CriaRequest();
+
+                // Iniciar uma requisição
+                xmlreq.open("GET", "./editar_voluntario.php?" + dados, true);
+
+                // Atribui uma função para ser executada sempre que houver uma mudança de ado
+                xmlreq.onreadystatechange = function(){
+                    // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
+                    if (xmlreq.readyState == 4) {
+
+                        // Verifica se o arquivo foi encontrado com sucesso
+                        if (xmlreq.status == 200) {
+                            window.alert("Edição feita com sucesso!");
+                            window.location.reload();
+                        }else{
+                            let x = "Erro: " + xmlreq.statusText;
+                            window.alert(x);
+                        }
+                    }
+                };
+                xmlreq.send();
+            } else {
+                //Se houve mudanca na senha e necessaria uma criptografia da nova
+                var xmlreq = CriaRequest();
+
+                // Iniciar uma requisição
+                xmlreq.open("GET", "./editar_voluntario_crypto.php?" + dados, true);
+
+                // Atribui uma função para ser executada sempre que houver uma mudança de ado
+                xmlreq.onreadystatechange = function(){
+                    // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
+                    if (xmlreq.readyState == 4) {
+
+                        // Verifica se o arquivo foi encontrado com sucesso
+                        if (xmlreq.status == 200) {
+                            window.alert("Edição feita com sucesso!");
+                            window.location.reload();
+                        }else{
+                            let x = "Erro: " + xmlreq.statusText;
+                            window.alert(x);
+                        }
+                    }
+                };
+                xmlreq.send();
+            }
+        }
+
+        //Funcao que "deleta" o voluntario selecionado pela tabela, como todo dado e valido nao deletamos realmente
+        //o voluntario, apenas transformamos o id dele em negativo. :)
+        function delVoluntario() {
+            if(voluntarioSelecionado != null) {
+                if(window.confirm("Tem certeza que deseja excluir esse voluntário?")) {
+                    var xmlreq = CriaRequest();
+
+                    // Iniciar uma requisição
+                    xmlreq.open("GET", "./deletar_voluntario.php?idVol=" + voluntarioSelecionado[0], true);
+
+                    // Atribui uma função para ser executada sempre que houver uma mudança de ado
+                    xmlreq.onreadystatechange = function(){
+                        // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
+                        if (xmlreq.readyState == 4) {
+
+                            // Verifica se o arquivo foi encontrado com sucesso
+                            if (xmlreq.status == 200) {
+                                window.alert("Exclusão feita com sucesso!");
+                                window.location.reload();
+                            }else{
+                                let x = "Erro: " + xmlreq.statusText;
+                                window.alert(x);
+                            }
+                        }
+                    };
+                    xmlreq.send();
+                }
+            } else {
+                window.alert("Selecione um voluntário para excluir!");
+            }
+        }
+    </script>
+
     <!--Script de collapses-->
     <script>
         var btTb = document.getElementById('btVolunts');
