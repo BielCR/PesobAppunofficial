@@ -1,6 +1,6 @@
 <?php
     //Para fazer a conexao com o BD
-    include "conexao.php";
+    include "../conexao.php";
 
     //Recebe os dados vindos do formulario
     $nome = $_POST["nomeNovoVol"];
@@ -18,3 +18,6 @@
         //Volta a pagina mantendo o historico do usuario
         echo "<script>window.history.back()</script>";
     }
+
+    $con->close();
+?>
