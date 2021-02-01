@@ -2,16 +2,16 @@
 //Para fazer a conexao com o BD
 include "../conexao.php";
 
-//Recebe os dados vindos do formulario
+//Recebe os dados vindos do formulario de cadastro
 $nome = $_POST["txtNome"];
 $descricao = $_POST["txtDescricao"];
 $preRequisitos = $_POST["txtPre"];
 
 
 //Insercao com o Banco
-$SQL = "INSERT INTO tbtreinamentos (nomeTreinamento, descricaoTreinamento, preReq)
-     VALUES ('" . utf8_decode($nome) . "', '" . utf8_decode($descricao) . "
-     ', '" . utf8_decode($preRequisitos) . "')";
+$SQL = "INSERT INTO tbtreinamentos (nomeTreinamento, descricaoTreinamento, preReq) 
+        VALUES ('" . utf8_decode($nome) . "', '" . utf8_decode($descricao) . "
+        ', '" . utf8_decode($preRequisitos) . "')";
 
      $con->query($SQL) or die($con->error);
 
