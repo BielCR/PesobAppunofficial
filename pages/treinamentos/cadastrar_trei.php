@@ -5,30 +5,16 @@ include "../conexao.php";
 //Recebe os dados vindos do formulario de cadastro
 $nome = $_POST["txtNome"];
 $descricao = $_POST["txtDescricao"];
-$preRequisitos = $_POST["txtPre"];
+$preRequisitos = $_POST["preTxt"];
 
 
 //Insercao com o Banco
-$SQL = "INSERT INTO treinamentos (nomeTreinamento, descricaoTreinamento, preReq) 
-        VALUES ('" . utf8_decode($nome) . "', '" . utf8_decode($descricao) . "
-        ', '" . utf8_decode($preRequisitos) . "')";
+$SQL = "INSERT INTO treinamentos (nomeTreinamento, descricaoTreinamento, preReq)
+     VALUES ('$nome', '$descricao', '$preRequisitos')";
 
-     $con->query($SQL) or die($con->error);
-
-if ($con->query($SQL) == true) {
+$con->query($SQL) or die($con->error);
 ?>
-    <script>
-        alert('Cadastro de treinamento realizado com sucesso!');
-       window.location = 'CRUD_Treinamento.php';
-    </script>
-<?php
-} else {
-?>
-    <script>
-        alert("Erro no cadastro! ' . $con->error . '");
-        //Volta a pagina mantendo o historico do usuario
-        //window.location = 'CRUD_Treinamento.php';
-    </script>
-<?php
-}
-?>
+<script>
+    alert('Cadastro de treinamento realizado com sucesso!');
+    window.location = 'CRUD_Treinamento.php';
+</script>

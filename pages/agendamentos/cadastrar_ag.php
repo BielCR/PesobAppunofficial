@@ -10,7 +10,7 @@ $nome = $_GET['nome'];
 
 //Insercao com o Banco
 $SQL = "INSERT INTO agendamentos (idTreinamento, dataAgendamento, horaAgendamento, nomeTreinamento) 
-VALUES ('" . $id . "', '" . $data . "', '" . $hora . "', '" . utf8_decode($nome) . "')";
+VALUES ('" . $id . "', '" . $data . "', '" . $hora . "', '" . $nome . "')";
 
 $con->query($SQL) or die($con->error);
 ?>
