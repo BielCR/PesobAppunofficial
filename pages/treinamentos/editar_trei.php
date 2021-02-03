@@ -9,7 +9,7 @@ $descricao = $_POST["txtDescricao"];
 $preRequisitos = $_POST["txtPre"];
 
 //Insercao com o Banco
-$SQL = "UPDATE tbtreinamentos SET nomeTreinamento = '" . utf8_decode($nome) . "',
+$SQL = "UPDATE treinamentos SET nomeTreinamento = '" . utf8_decode($nome) . "',
  descricaoTreinamento = '" . $descricao . "', 
  preReq = '" . $preRequisitos . "' WHERE idTreinamento = '" . $idTrei ."'" ;
 

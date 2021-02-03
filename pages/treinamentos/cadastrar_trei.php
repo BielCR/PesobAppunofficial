@@ -9,7 +9,7 @@ $preRequisitos = $_POST["txtPre"];
 
 
 //Insercao com o Banco
-$SQL = "INSERT INTO tbtreinamentos (nomeTreinamento, descricaoTreinamento, preReq) 
+$SQL = "INSERT INTO treinamentos (nomeTreinamento, descricaoTreinamento, preReq) 
         VALUES ('" . utf8_decode($nome) . "', '" . utf8_decode($descricao) . "
         ', '" . utf8_decode($preRequisitos) . "')";
 

@@ -30,7 +30,7 @@ include "../conexao.php";
     $id = $_GET['idCat'];
 
     //definição do comando sql para a consulta
-    $SQL = "SELECT * FROM tbtreinamentos WHERE idTreinamento = '{$id}'";
+    $SQL = "SELECT * FROM treinamentos WHERE idTreinamento = '{$id}'";
     //executa o comando sql
     $query = $con->query($SQL) or die($con->error);
     $dados = $query->fetch_assoc();

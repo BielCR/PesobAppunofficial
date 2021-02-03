@@ -18,7 +18,7 @@
 
     if (is_numeric($_GET["id"])) {
         
-        $sql = "DELETE FROM tbtreinamentos WHERE idTreinamento = " . $_GET["id"];
+        $sql = "DELETE FROM treinamentos WHERE idTreinamento = " . $_GET["id"];
         if ($con->query($sql) === TRUE) {
             $_SESSION['excluir'] = "OK";
             header ("Location: CRUD_Treinamento.php");

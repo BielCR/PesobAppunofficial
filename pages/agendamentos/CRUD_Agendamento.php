@@ -1,3 +1,7 @@
+<?php
+//incluindo o php de conexao ao banco
+include "../conexao.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,47 +15,92 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 
+
+    <script type="text/javascript">
+        //salvando as variaveis temporarias 
+        var nomeTrei = "";
+        var idTrei = "";
+
+        function chamaTreinamento(nome, id) {
+            document.getElementById('mensagem').innerHTML = "Agendamento do treinamento: " + nome;
+            nomeTrei = nome;
+            idTrei = id;
+            document.getElementById('dropTreinamentos').style.display = "none";
+            document.getElementById('inputDados').style.display = "initial";
+        }
+
+        function enviarId() {
+            var data = document.getElementById('calendario').value;
+            var hora = document.getElementById('hora').value;
+            window.location = 'cadastrar_ag.php?id=' + idTrei + '&data=' + data + '&hora=' + hora + '&nome=' +nomeTrei;
+        }
+
+        function mostraBotao() {
+            document.getElementById('dropTreinamentos').style.display = "initial";
+            document.getElementById('inputDados').style.display = "none";
+        }
+    </script>
 </head>
 
 <body class="corpo" data-spy="scroll" data-target=".navbar" data-offset="50">
     <!--Barra de navegação (1/2)-->
-    <?php include "../NAVBAR.php" ?>
+    <?php include "../NAVBAR.php"; ?>
 
     <!--Corpo principal (2/2)-->
     <div class="container rounded bg-white p-3 mt-3">
-        <form name="formCadastro" action="cadastro.php" method="POST" autocomplete="on" class="needs-validation">
+
+        <div>
+            <?php
+            //definição do comando sql para a consulta
+            $SQL = "SELECT * FROM treinamentos ORDER BY idTreinamento";
+            //executa o comando sql
+            $queryTreinamentos = $con->query($SQL);
+            ?>
 
             <!--Lista de treinamentos existentes-->
-            <div class="dropdown dropright form-group">
+            <div class="dropdown form-group pt-3">
                 <button class="btn btn-primary dropdown-toggle" type="button" id="dropTreinamentos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Treinamentos cadastrados</button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-toggle="collapse" data-target="#inputDados">
-                    <a class="dropdown-item" href="#">Brigadista Aéreo</a>
-                    <a class="dropdown-item" href="#">Primeiros socorros</a>
-                    <a class="dropdown-item" href="#">Resgate de animais</a>
+                    <?php while ($exibir = $queryTreinamentos->fetch_assoc()) { ?>
+                        <a class="dropdown-item" href="#" onclick="chamaTreinamento('<?php echo $exibir['nomeTreinamento']; ?>','<?php echo $exibir['idTreinamento']; ?>')"><?php echo $exibir["nomeTreinamento"]; ?></a>
+                    <?php } ?>
                 </div>
             </div>
 
 
-            <!--Inputs de data e hora-->
+            <form name="formCadastro" action="cadastrar_ag.php" method="POST" autocomplete="on" class="needs-validation">
+                <!--Inputs de data e hora-->
 
-            <div class="form-group collapse" id="inputDados">
-                <h4>Agendamento do treinamento:</h4>
-                <label for="calendario" class="h5">Data de agendamento</label>
-                <input type="date" name="calendario" id="calendario" class="form-control form-group">
+                <div class="form-group collapse" id="inputDados">
+                    <h4 id="mensagem">Agendamento do treinamento:</h4>
+                    <label for="calendario" class="h5">Data de agendamento</label>
+                    <input type="date" name="calendario" id="calendario" class="form-control form-group">
+                    <label for="hora" class="h5">Hora de agendamento</label>
+                    <input type="time" name="hora" id="hora" class="form-control form-group">
 
-                <label for="hora" class="h5">Hora de agendamento</label>
-                <input type="time" name="hora" id="hora" class="form-control form-group">
-            </div>
 
-            <!--Botoes de agendamento e cancelamento-->
-            <div class="btn-group btn-group-lg divLT">
-                <button type="submit" class="btn btn-primary form-group mr-1">Agendar</button>
-                <button type="reset" class="btn btn-danger form-group ">Cancelar</button>
-            </div>
-        </form>
+                    <!--Botoes de agendamento e cancelamento-->
+                    <div class="btn-group btn-group-lg divLT">
+                        <a href="#" role="button" class="btn btn-primary form-group mr-1" onclick="enviarId()">Agendar</a>
+                        <a href="#" role="button" class="btn btn-danger form-group" onclick="mostraBotao()">Cancelar</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
         <div id="verificar">
-            <form name="formLeitura" action="alterar.php" method="POST" autocomplete="on" class="need-validation ">
+            
+        <?php
+            //definição do comando sql para a consulta
+            $SQL = "SELECT * FROM agendamentos ORDER BY dataAgendamento";
+            //executa o comando sql
+            $queryAgendamentos = $con->query($SQL);
+        ?>
+
+
+            <form name="formRUD" action="alterar.php" method="POST" autocomplete="on" class="need-validation ">
                 <!--tabela com todos os treinamentos-->
                 <div class="form-group container form-table mt-3 table-responsive">
                     <table class="table table-striped bg-ghostwhite table-bordered">
@@ -61,61 +110,30 @@
                         <tbody>
                             <tr>
                                 <th scope="col">Nome</th>
-                                <th scope="col">Data</th>
+                                <th scope="col">Data e Hora</th>
                                 <th scope="col">Alterar</th>
                                 <th scope="col">Excluir</th>
                             </tr>
-                            <tr>
-                                <td>Brigadista Aéreo</td>
-                                <td>24/05/2021</td>
-                                <td>
-                                    <a href="Alterar_Agendamento.php" class="btn btn-info form-control" role="button">Alterar</a>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#myModal">
-                                        Excluir
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Brigadista Aéreo</td>
-                                <td>29/05/2021</td>
-                                <td>
-                                    <a href="Alterar_Agendamento.php" class="btn btn-info form-control" role="button">Alterar</a>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#myModal">
-                                        Excluir
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Primeiros socorros</td>
-                                <td>09/10/2021</td>
-                                <td>
-                                    <a href="Alterar_Agendamento.php" class="btn btn-info form-control" role="button">Alterar</a>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#myModal">
-                                        Excluir
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Resgate de animais</td>
-                                <td>13/11/2021</td>
-                                <td>
-                                    <a href="Alterar_Agendamento.php" class="btn btn-info form-control" role="button">Alterar</a>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#myModal">
-                                        Excluir
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
+                            <?php while ($exibir = $queryAgendamentos->fetch_assoc()) { ?>
+                                <tr>
+                                    <td>
+                                    <?php echo $exibir["nomeTreinamento"]; ?>
+                                    </td>
+                                    <td>
+                                    <?php echo $exibir["dataAgendamento"] . " " . $exibir["horaAgendamento"]; ?>
+                                    </td>
+                                    <td>
+                                    <a href="Alterar_Treinamento.php?idCat=<?php echo $exibir["idTreinamento"] ?>" 
+                                    class="btn btn-info form-control" role="button">Alterar</a>
+                                    </td>
+                                    <td>
+                                    <a href="#" class="btn btn-danger form-control" role="button" data-toggle="modal"
+                                    data-target="#modalExclusao" onclick= "mensagemApagarRegistro('<?php echo $exibir['idTreinamento'];?>'
+                                    ,'<?php echo $exibir['nomeTreinamento'];?>')" title = "Excluir Treinamento">Excluir</a> 
+                                    </td>
+                                </tr>
+                            <?php } ?>
                     </table>
-                    <br>
                 </div>
 
                 <!--Modal de exclusão-->
