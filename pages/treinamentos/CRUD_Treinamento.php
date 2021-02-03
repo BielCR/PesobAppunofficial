@@ -84,7 +84,7 @@ include "../conexao.php";
                             <?php } ?>
                         </div>
                     </div>
-                    <input name="preTxt" id="preTxt" type="text" class="form-control" placeholder="Pré requisitos">
+                    <input readonly name="preTxt" id="preTxt" type="text" class="form-control" placeholder="Pré requisitos">
                 </div>
 
                 <!--<div class="form-group ">

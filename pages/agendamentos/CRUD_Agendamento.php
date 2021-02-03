@@ -85,19 +85,19 @@ include "../conexao.php";
                         <a href="#" role="button" class="btn btn-primary form-group mr-1" onclick="enviarId()">Agendar</a>
                         <a href="#" role="button" class="btn btn-danger form-group" onclick="mostraBotao()">Cancelar</a>
                     </div>
-                </div>
-            </form>
-        </div>
+                    </div>
+                </form>
+            </div>
 
 
-        <div id="verificar">
-            
-        <?php
-            //definição do comando sql para a consulta
-            $SQL = "SELECT * FROM agendamentos ORDER BY dataAgendamento";
-            //executa o comando sql
-            $queryAgendamentos = $con->query($SQL);
-        ?>
+            <div id="verificar">
+                
+            <?php
+                //definição do comando sql para a consulta
+                $SQL = "SELECT * FROM agendamentos ORDER BY dataAgendamento";
+                //executa o comando sql
+                $queryAgendamentos = $con->query($SQL);
+            ?>
 
 
             <form name="formRUD" action="alterar.php" method="POST" autocomplete="on" class="need-validation ">
@@ -114,16 +114,20 @@ include "../conexao.php";
                                 <th scope="col">Alterar</th>
                                 <th scope="col">Excluir</th>
                             </tr>
-                            <?php while ($exibir = $queryAgendamentos->fetch_assoc()) { ?>
+                            <?php 
+                            while ($exibir = $queryAgendamentos->fetch_assoc()) { 
+                                $data = $exibir["dataAgendamento"];
+                                $data = implode("/",array_reverse(explode("-",$data)));
+                                ?>
                                 <tr>
                                     <td>
                                     <?php echo $exibir["nomeTreinamento"]; ?>
                                     </td>
                                     <td>
-                                    <?php echo $exibir["dataAgendamento"] . " " . $exibir["horaAgendamento"]; ?>
+                                    <?php echo $data . " - " . $exibir["horaAgendamento"]; ?>
                                     </td>
                                     <td>
-                                    <a href="Alterar_Treinamento.php?idCat=<?php echo $exibir["idTreinamento"] ?>" 
+                                    <a href="Alterar_Agendamento.php?idCat=<?php echo $exibir["idTreinamento"]; ?>" 
                                     class="btn btn-info form-control" role="button">Alterar</a>
                                     </td>
                                     <td>
