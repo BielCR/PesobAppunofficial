@@ -22,7 +22,7 @@ include "../conexao.php";
         var idTrei = "";
 
         function chamaTreinamento(nome, id) {
-            document.getElementById('mensagem').innerHTML = "Agendamento do treinamento: " + nome;
+            document.getElementById('mensagem').innerHTML = "Agendamento do treinamento: " + nome   ;
             nomeTrei = nome;
             idTrei = id;
             document.getElementById('dropTreinamentos').style.display = "none";
@@ -32,7 +32,10 @@ include "../conexao.php";
         function enviarId() {
             var data = document.getElementById('calendario').value;
             var hora = document.getElementById('hora').value;
-            window.location = 'cadastrar_ag.php?id=' + idTrei + '&data=' + data + '&hora=' + hora + '&nome=' +nomeTrei;
+            var local = document.getElementById('local').value;
+            var instrutor = document.getElementById('instrutor').value;
+            window.location = 'cadastrar_ag.php?id=' + idTrei + '&data=' + data + '&hora=' + hora + '&nome=' +nomeTrei
+            +'&local=' + local +'&instrutor=' +instrutor;
         }
 
         function mostraBotao() {
@@ -70,14 +73,18 @@ include "../conexao.php";
 
 
             <form name="formCadastro" action="cadastrar_ag.php" method="POST" autocomplete="on" class="needs-validation">
-                <!--Inputs de data e hora-->
-
+                
+                <!--Inputs de agendamento-->
                 <div class="form-group collapse" id="inputDados">
-                    <h4 id="mensagem">Agendamento do treinamento:</h4>
+                    <h2 class="text-center" id="mensagem">Agendamento do treinamento:</h2>
                     <label for="calendario" class="h5">Data de agendamento</label>
                     <input type="date" name="calendario" id="calendario" class="form-control form-group">
                     <label for="hora" class="h5">Hora de agendamento</label>
                     <input type="time" name="hora" id="hora" class="form-control form-group">
+                    <label for="local" class="h5">Local do treinamento</label>
+                    <input type="text" name="local" id="local" class="form-control form-group">
+                    <label for="instrutor" class="h5">Nome do intrutor</label>
+                    <input type="text" name="instrutor" id="instrutor" class="form-control form-group">
 
 
                     <!--Botoes de agendamento e cancelamento-->
