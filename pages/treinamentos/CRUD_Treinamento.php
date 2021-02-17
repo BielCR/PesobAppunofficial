@@ -104,13 +104,14 @@ include "../conexao.php";
 
         <!--Listando os treinamentos colsultados no banco-->
         <form name="listaTreinamentos" action="CRUD_Treinamento.php" method="GET">
+           
             <!--Executando o select de todos os treinamentos já existentes-->
             <?php
-            //definição do comando sql para a consulta
             $SQL = "SELECT * FROM treinamentos ORDER BY idTreinamento";
-            //executa o comando sql
             $query = $con->query($SQL);
             ?>
+
+            
             <p class="h4">Tabela de treinamentos</p>
             <table class="table table-striped bg-ghostwhite table-bordered">
                 <tr>
@@ -169,7 +170,7 @@ include "../conexao.php";
             </div>
         </div>
 
-    </div>
+    </diSv>
 </body>
 
 </html>
