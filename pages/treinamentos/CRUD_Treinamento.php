@@ -170,7 +170,7 @@ include "../conexao.php";
             </div>
         </div>
 
-    </diSv>
+    </div>
 </body>
 
 </html>

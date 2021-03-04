@@ -11,7 +11,7 @@ $local = $_GET['local'];
 $nomeInstrutor = $_GET['instrutor'];
 
 //Insercao com o Banco
-$SQL = "INSERT INTO agendamentos (idTreinamento, dataAgendamento, horaAgendamento, nomeTreinamento, localTreinamento, nomeIntrutor) 
+$SQL = "INSERT INTO agendamentos (idTreinamento, dataAgendamento, horaAgendamento, nomeTreinamento, localTreinamento, nomeInstrutor) 
 VALUES ('" . $id . "', '" . $data . "', '" . $hora . "', '" . $nomeTrei . "', '" . $local . "', '" . $nomeInstrutor ."')";
 
 $con->query($SQL) or die($con->error);
