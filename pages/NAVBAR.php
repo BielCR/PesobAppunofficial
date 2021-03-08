@@ -15,7 +15,7 @@
                 <a href="../voluntarios/CRUD_Voluntarios.php" class="nav-link">VOLUNTÁRIOS</a>
             </li>
             <li class="nav-item">
-                <a href="../voluntarios/CONVOCACAO_Brig.php" class="nav-link">CONVOCAÇÃO DE BRIGADISTAS</a>
+                <a href="../convocacao/CONVOCACAO_Brig.php" class="nav-link">CONVOCAÇÃO DE BRIGADISTAS</a>
             </li>
             <li class="nav-item dropdown">
                 <a href="#" id="navTreinamentos" class="nav-link dropdown-toggle" data-toggle="dropdown">TREINAMENTOS</a>
