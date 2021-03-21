@@ -79,29 +79,13 @@
 
 <body>
     <!--Barra de navegação (1/2)-->
-    <?php include "../NAVBAR.php" ?>
+    <?php include "../NAVBAR.php";?>
 
+    <?php include "../conexao.php"; ?>
     <!--Corpo principal (2/2)-->
     <div class="container mt-3 bg-white py-2 rounded">
         <div class="row">
             <div class="col-md-4">
-                <!--O seletor de telas do App-->
-                <h3>Telas do App</h3>
-                <div class="dropdown">
-                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Selecione uma Tela</button>
-                    <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item">Informações</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">Trilhas</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">Primeiros Socorros</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">Incêndios Florestais</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">UCs de Ouro Branco</a>
-                    </div>
-                </div>
-                <hr>
                 <!--A pre-visualização da tela no app-->
                 <h4>Pre-visualização</h4>
                 <img class="rounded shadow-lg border mx-auto d-block img-fluid" src="https://i.imgur.com/ZldJXpD.png" alt="prototipoTelaInfo" title="Pre-visualização da Tela">
@@ -131,40 +115,7 @@
                     <h3>Tópicos atuais</h3>
                 </div>
                 <div id="accordion">
-                    <div class="card">
-                        <div class="card-header">
-                            <button type="button" class="btn btn-block" data-toggle="collapse" data-target="#tp1">O que levar para uma trilha?</button>
-                        </div>
-                        <div id="tp1" class="collapse" data-parent="#accordion">
-                            <div class="card-body">
-                                <p>Conteúdo do tópico 1...</p>
-                                <img class="img-fluid" src="https://i.imgur.com/zWcEbRw.jpeg" alt="imagemExemplo" title="Comida">
-                                <p>Mais conteúdo...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="car-header">
-                            <button type="button" class="btn btn-block" data-toggle="collapse" data-target="#tp2">O que não fazer?</button>
-                        </div>
-                        <div id="tp2" class="collapse" data-parent="#accordion">
-                            <div class="card-body">
-                                <p>Conteúdo do tópico 2...</p>
-                                <img class="img-fluid" src="https://i.imgur.com/DoL4Bz7.gif" alt="imagemExemplo" title="Lenha">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header">
-                            <button type="button" class="btn btn-block" data-toggle="collapse" data-target="#tp3">Sobre o App</button>
-                        </div>
-                        <div id="tp3" class="collapse" data-parent="#accordion">
-                            <div class="card-body">
-                                <p>Conteúdo do tópico 3</p>
-                                <p>"App muito daora, recomendo mto" - Kdu</p>
-                            </div>
-                        </div>
-                    </div>
+                    <?php include "./cards_topicos.php";?>
                 </div>
                 <hr>
                 <!--O formulário-->
@@ -180,14 +131,14 @@
                 </div>
                 <!--Formulário de adicionar tópicos-->
                 <div id="addTop" class="collapse fade show pt-3">
-                    <form action="" method="POST">
+                    <form action="add_topico.php" method="POST">
                         <div class="form-group">
                             <label class="fLabel" for="titulo">Título do tópico</label>
                             <input type="text" id="titulo" name="titulo" class="form-control" placeholder="Insira um título para o tópico" required>
                         </div>
                         <div class="form-group">
                             <label class="fLabel" for="texto">Campo de texto</label>
-                            <textarea id="texto" class="form-control" rows="7" placeholder="Insira o texto do tópico"></textarea>
+                            <textarea id="texto" name="corpo" class="form-control" rows="7" placeholder="Insira o texto do tópico"></textarea>
                         </div>
                         <label class="fLabel" for="imagem">Selecione uma imagem (para ilustrar melhor o tópico)</label>
                         <input type="file" id="imagem" name="imagem" accept="image/png, image/jpeg, image/gif">
@@ -196,12 +147,10 @@
                 </div>
                 <!--Formulário de deletar tópicos-->
                 <div id="delTop" class="collapse fade pt-3">
-                    <form action="" method="POST">
+                    <form action="./del_topico.php" method="POST">
                         <label class="fLabel" for="topDeletar">Selecione um Tópico</label>
                         <select name="topDeletar" id="topDeletar" class="form-control">
-                            <option>O que levar para uma trilha?</option>
-                            <option>O que não fazer?</option>
-                            <option>Sobre o App</option>
+                            <?php include "./options_del_topicos.php";?>
                         </select>
                         <div class="d-flex justify-content-end pt-4">
                             <button type="submit" class="btn btn-danger">Deletar</button>
@@ -211,6 +160,8 @@
             </div>
         </div>
     </div>
+
+    <?php $con->close();?>
 
     <!--Modal de qr Code-->
     <div class="modal fade" id="qrModal">

@@ -6,9 +6,12 @@
     <div class="collapse navbar-collapse" id="menuList">
         <ul class="navbar-nav">
             <li class="nav-item">
+<<<<<<< Updated upstream
                 <a href="../mapa/visualizarMapa.php" class="nav-link">MAPA</a>
             </li>
             <li class="nav-item">
+=======
+>>>>>>> Stashed changes
                 <a href="../telasApp/MOD_App.php" class="nav-link">TELAS APP</a>
             </li>
             <li class="nav-item">
