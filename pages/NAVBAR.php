@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="menuList">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a href="#" class="nav-link">MENU</a>
+                <a href="../mapa/visualizarMapa.php" class="nav-link">MAPA</a>
             </li>
             <li class="nav-item">
                 <a href="../telasApp/MOD_App.php" class="nav-link">TELAS APP</a>
