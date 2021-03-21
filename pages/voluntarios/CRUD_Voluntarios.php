@@ -68,7 +68,7 @@
                 <div class="d-flex">
                     <!--Botão que irá alterar o atributo de habilitado dos inputs-->
                     <button id="btEdit" type="button" class="btn btn-warning ml-auto h-50 align-self-center">Editar</button>
-                    <a href="#modalFotoVol" class="mx-auto d-block w-25" data-toggle="modal"><img class="rounded shadow-lg border img-fluid" src="https://i.pinimg.com/originals/24/5a/e1/245ae17922e87954167a22bb77addf89.jpg" alt="Foto do Voluntário" title="nome do voluntario"></a>
+                    <a href="#modalFotoVol" class="mx-auto d-block w-25" data-toggle="modal"><img class="rounded shadow-lg border img-fluid" src="https://i.imgur.com/eQDusBx.jpg" alt="Foto do Voluntário" title="nome do voluntario"></a>
                     <!--MODAL PARA EDITAR FOTO DE VOLUNTÁRIO-->
                     <div class="modal fade" id="modalFotoVol">
                         <div class="modal-dialog">
