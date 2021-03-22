@@ -99,7 +99,7 @@
                                 <button type="button" class="close" data-dismiss="modal">x</button>
                             </div>
                             <div class="modal-body bg-white">
-                                <img style="width: 85%; height: 85%;" class="rounded shadow-lg border mx-auto d-block img-fluid" src="https://i.imgur.com/ZldJXpD.png" alt="prototipoTelaInfo" title="Pre-visualização da Tela">
+                                <img style="width: 85%; height: 85%;" class="rounded shadow-lg border mx-auto d-block img-fluid" src="https://i.imgur.com/pcZhUM0.png" alt="prototipoTelaInfo" title="Pre-visualização da Tela">
                             </div>
                             <div class="modal-footer bg-white">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
