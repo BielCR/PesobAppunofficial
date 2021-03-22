@@ -74,7 +74,7 @@ include "../conexao.php";
 
             <!--Lista de treinamentos existentes-->
             <div class="dropdown form-group pt-3">
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropTreinamentos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-success dropdown-toggle" type="button" id="dropTreinamentos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Treinamentos cadastrados</button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-toggle="collapse" data-target="#inputDados">
                     <?php while ($exibir = $queryTreinamentos->fetch_assoc()) { ?>
@@ -101,7 +101,7 @@ include "../conexao.php";
 
                     <!--Botoes de agendamento e cancelamento-->
                     <div class="btn-group btn-group-lg divLT">
-                        <a href="#" role="button" class="btn btn-primary form-group mr-1" onclick="enviarId()">Agendar</a>
+                        <a href="#" role="button" class="btn btn-success form-group mr-1" onclick="enviarId()">Agendar</a>
                         <a href="#" role="button" class="btn btn-danger form-group" onclick="mostraBotao()">Cancelar</a>
                     </div>
                 </div>
@@ -145,7 +145,7 @@ include "../conexao.php";
                                 <?php echo $data . " - " . $exibe["horaAgendamento"]; ?>
                             </td>
                             <td>
-                            <a href="Alterar_Agendamento.php?idAg=<?php echo $exibe["idAgendamento"] ?>" class="btn btn-info form-control" role="button">Alterar</a>
+                            <a href="Alterar_Agendamento.php?idAg=<?php echo $exibe["idAgendamento"] ?>" class="btn btn-warning form-control" role="button">Alterar</a>
                             </td>
                             <td>
                             <a href="#" onclick="mensagemapagar('<?php echo $exibe['idAgendamento'];?>', '<?php echo $exibe['nomeTreinamento'];?>')"
