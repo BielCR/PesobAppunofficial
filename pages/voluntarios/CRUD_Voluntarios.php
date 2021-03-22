@@ -276,7 +276,6 @@
                     // Verifica se o arquivo foi encontrado com sucesso
                     if (xmlreq.status == 200) {
                         optionsSelectTrei = xmlreq.responseText;
-                        window.alert(optionsSelectTrei);
                         
                         document.getElementById("treiEdit").innerHTML = optionsSelectTrei;
                     }else{
