@@ -109,6 +109,10 @@
                         <label class="fLabel" for="infoSenha">Senha</label>
                         <input id="infoSenha" name="infoSenha" type="password" class="form-control" disabled>
                     </div>
+                    <div class="form-group">
+                        <label class="fLabel" for="infoTreinamentos">Treinamentos</label>
+                        <input id="infoTreinamentos" name="infoTreinamentos" type="text" class="form-control" disabled>
+                    </div>
                     <div id="confirmarEdit" class="collapse">
                         <button type="button" class="btn btn-success ml-auto d-block" onclick="editarVoluntario()">Confirmar</button>
                     </div>
@@ -166,7 +170,7 @@
             var xmlreq = CriaRequest();
 
             // Iniciar uma requisição
-            xmlreq.open("GET", "sel_Voluntario.php?emailVol=" + emailVol, true);
+            xmlreq.open("GET", "sel_voluntario.php?emailVol=" + emailVol, true);
 
             // Atribui uma função para ser executada sempre que houver uma mudança de ado
             xmlreq.onreadystatechange = function(){
@@ -178,7 +182,7 @@
                     // Verifica se o arquivo foi encontrado com sucesso
                     if (xmlreq.status == 200) {
                         voluntario = xmlreq.responseText;
-                        attInputs(voluntario);
+                        attInputs(voluntario, emailVol);
                     }else{
                         let x = "Erro: " + xmlreq.statusText;
                         window.alert(x);
@@ -188,7 +192,7 @@
             xmlreq.send();
         }
 
-        function attInputs(volunt) {
+        function attInputs(volunt, email) {
             //Variável que guarda os dados do voluntario selecionado
             voluntarioSelecionado = volunt.split("|");
 
@@ -196,6 +200,29 @@
             document.getElementById('infoNome').value = voluntarioSelecionado[1];
             document.getElementById('infoEmail').value = voluntarioSelecionado[2];
             document.getElementById('infoSenha').value = voluntarioSelecionado[3];
+
+            //Atualizacao do campo de treinamentos
+            var xmlreq = CriaRequest();
+            
+            // Iniciar uma requisição
+            xmlreq.open("GET", "sel_trei_voluntario.php?emailVol=" + email, true);
+
+            // Atribui uma função para ser executada sempre que houver uma mudança de ado
+            xmlreq.onreadystatechange = function(){
+                // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
+                if (xmlreq.readyState == 4) {
+
+                    // Verifica se o arquivo foi encontrado com sucesso
+                    if (xmlreq.status == 200) {
+                        treiVoluntario = xmlreq.responseText;
+                        document.getElementById('infoTreinamentos').value = treiVoluntario;
+                    }else{
+                        let x = "Erro: " + xmlreq.statusText;
+                        window.alert(x);
+                    }
+                }
+            };
+            xmlreq.send();
         }
 
         //Funcao que verifica e chama o php responsavel pela edicao no BD
