@@ -1,4 +1,3 @@
-
 function initMap() {
     //instanciando mapa
     const initialPosition = new google.maps.LatLng(-20.491278919074823, -43.685368522936606);
@@ -19,25 +18,21 @@ function initMap() {
         if (this.readyState == 4 && this.status == 200) { //testa se a comunicação com o servidor está OK
             //converte o json num objeto javascript
             var myObj = JSON.parse(this.responseText);
-            console.log(myObj);
             for(var i =0; i<myObj.length; i++){
-                if(myObj[i]["status"]<'2'){
-                    //lixeira vazia ou metade cheia
-                    marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(myObj[i].latitude, myObj[i].longitude),
-                    map: mapa,
-                    title : "Aqui tem uma lixeira"
-                });
-                }else{
-                    //lixeira quase cheia ou totalmente cheia
-                    marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(myObj[i].latitude, myObj[i].longitude),
-                    map: mapa,
-                    title : "Aqui tem uma lixeira"
-                    });
-                }
+                var mili = Date.parse(myObj[i].dataHora);
+                var data = new Date(mili);
+                var dataStr = data.getDate()+"/"+data.getMonth()+"/"+data.getFullYear()+"\n"+
+                                data.getHours()+":"+data.getMinutes();
+                console.log(dataStr);   
 
-            //adicionando marcadores no mapa
+
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(myObj[i].latitude, myObj[i].longitude),
+                    icon: "../styles/media/fireMarker.png",
+                    map: mapa,
+                    title : dataStr,
+                    optimized: false                    
+                });
             
             }
         
