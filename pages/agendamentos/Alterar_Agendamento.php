@@ -65,7 +65,7 @@
 
             <!--Botões-->
             <div class="btn-group divLT">
-                <button type="submit" class="btn btn-primary form-group mr-1">Alterar</button>
+                <button type="submit" class="btn btn-success form-group mr-1">Confirmar</button>
                 <a href="CRUD_Agendamento.php" class="btn btn-danger form-group">Cancelar</a>
             </div>
         </form>

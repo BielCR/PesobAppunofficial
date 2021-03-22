@@ -72,7 +72,7 @@ include "../conexao.php";
 
             <!--Botões-->
             <div class="btn-group">
-                <button name="editTrei" id="editTrei" class="btn btn-success form-group" type="submit">Editar</button>
+                <button name="editTrei" id="editTrei" class="btn btn-success form-group" type="submit">Confirmar</button>
                 <a href="CRUD_Treinamento.php" type="reset" class="btn btn-danger form-group">Cancelar</a>
             </div>
         </form>

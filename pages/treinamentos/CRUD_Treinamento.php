@@ -76,7 +76,7 @@ include "../conexao.php";
                 <label for="dropTreinamentos">Pré requisitos: </label>
                 <div class="input-group form-group">
                     <div class="input-group-prepend dropdown form-group ">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropTreinamentos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-success dropdown-toggle" type="button" id="dropTreinamentos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Treinamentos cadastrados</button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-toggle="collapse" data-target="#inputDados">
                             <?php while ($exibir = $query->fetch_assoc()) { ?>
@@ -94,7 +94,7 @@ include "../conexao.php";
 
                 <!--Botões-->
                 <div class="btn-group btn-group-lg divLT">
-                    <button type="submit" class="btn btn-primary form-group">Enviar</button>
+                    <button type="submit" class="btn btn-success form-group">Enviar</button>
                     <button type="reset" class="btn btn-danger form-group ">Cancelar</button>
                 </div>
             </form>
@@ -126,7 +126,7 @@ include "../conexao.php";
                     <tr>
                         <td><?php echo $exibir["nomeTreinamento"] ?></td>
                         <td>
-                            <a href="Alterar_Treinamento.php?idCat=<?php echo $exibir["idTreinamento"] ?>" class="btn btn-info form-control" role="button">Alterar</a>
+                            <a href="Alterar_Treinamento.php?idCat=<?php echo $exibir["idTreinamento"] ?>" class="btn btn-warning form-control" role="button">Alterar</a>
                         </td>
                         <td>
                             <a href="#" class="btn btn-danger form-control" role="button" data-toggle="modal" data-target="#modalExclusao" onclick="mensagemApagarRegistro('<?php echo $exibir['idTreinamento']; ?>'
