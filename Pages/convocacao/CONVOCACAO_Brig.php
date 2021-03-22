@@ -91,11 +91,17 @@
                 }
             }
 
-            //Anexagem da descricao da convocacao ao email
-            var descricao = document.getElementById("txtDesc").value;
-            
-            document.location.href = "mailto:" + emails + "?subject=VOCÊ%20FOI%20CONVOCADX%20PELA%20BRIGADA%21&body=" + descricao;
-            event.preventDefault();
+            if(emails == "") {
+                window.alert("Selecione, pelo menos, um brigadista para convocar.");
+            } else {
+                //Anexagem da descricao da convocacao ao email
+                var descricao = document.getElementById("txtDesc").value;
+                
+                //Execucao do app de envio de emails padrao do sistema com o conteudo pre-definido
+                document.location.href = "mailto:" + emails + "?subject=VOCÊ%20FOI%20CONVOCADX%20PELA%20BRIGADA%21&body=" + descricao;
+                window.location.reload();
+                event.preventDefault();
+            }
         }
     </script>
 
