@@ -45,7 +45,9 @@ include "../conexao.php";
     
     ?>
     <div class="container rounded bg-white p-3 mt-3" style="justify-content: center;">
-        <div id="mapa" style="height:500px; width:1000px"></div>
+        <div id="mapa" style="height:500px; width:1200px"></div>
+        <div></div>
+        <a type="button" href="../convocacao/CONVOCACAO_Brig.php" class="button"></a>
     </div>
 </body>
 
