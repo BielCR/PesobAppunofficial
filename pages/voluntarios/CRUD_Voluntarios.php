@@ -21,7 +21,8 @@
 
 <body>
     <!--Barra de navegação (1/2)-->
-    <?php include "../NAVBAR.php" ?>
+    <?php include "../NAVBAR.php";?>
+    <?php include "../conexao.php";?>
 
     <!--Corpo principal (2/2)-->
     <div class="container mt-3 py-2 bg-white rounded">
@@ -34,7 +35,7 @@
                 <button id="btNovoVolunt" type="button" class="btn btn-outline-success">Novo Voluntário</button>
                 <!--Tabela de Voluntários-->
                 <div id="tbVol" class="collapse fade show bg-light ml-3 mt-1 shadow table-responsive">
-                    <?php include "./tabela_vol.php"?>
+                    <?php include "./tabela_vol.php";?>
                 </div>
                 <!--Cadastrar Novo Voluntário-->
                 <div id="novoVol" class="collapse fade ml-3 mt-1">
@@ -114,6 +115,11 @@
                         <input id="infoTreinamentos" name="infoTreinamentos" type="text" class="form-control" disabled>
                     </div>
                     <div id="confirmarEdit" class="collapse">
+                        <div class="form-group">
+                            <select name="treiEdit" id="treiEdit" class="form-control">
+    
+                            </select>
+                        </div>
                         <button type="button" class="btn btn-success ml-auto d-block" onclick="editarVoluntario()">Confirmar</button>
                     </div>
                 </div>
@@ -201,7 +207,7 @@
             document.getElementById('infoEmail').value = voluntarioSelecionado[2];
             document.getElementById('infoSenha').value = voluntarioSelecionado[3];
 
-            //Atualizacao do campo de treinamentos
+            //Atualizacao do campo de TREINAMENTOS
             var xmlreq = CriaRequest();
             
             // Iniciar uma requisição
@@ -215,7 +221,64 @@
                     // Verifica se o arquivo foi encontrado com sucesso
                     if (xmlreq.status == 200) {
                         treiVoluntario = xmlreq.responseText;
-                        document.getElementById('infoTreinamentos').value = treiVoluntario;
+                        var treinamentos = treiVoluntario.split("|");
+
+                        var stringTrei = "";
+                        var idsTrei = [];
+                        var cont = 0;
+
+                        for(var c = 0; c < treinamentos.length; c++) {
+                            if(c % 2 != 0) {
+                                if(c > 1) {
+                                    stringTrei += "; ";
+                                }
+                                stringTrei += treinamentos[c];
+                            } else {
+                                idsTrei[cont] = treinamentos[c];
+                                cont++;
+                            }
+                        }
+                        document.getElementById('infoTreinamentos').value = stringTrei;
+
+                        //Atualizando o select com os treinamentos oferecidos
+                        attSelectTrei(voluntarioSelecionado[0], idsTrei);
+                    }else{
+                        let x = "Erro: " + xmlreq.statusText;
+                        window.alert(x);
+                    }
+                }
+            };
+            xmlreq.send();
+        }
+
+        //Funcao para atualizar o select de treinamentos
+        function attSelectTrei(idVol, idsTrei) {
+            var xmlreq = CriaRequest();
+            var idsStr = "";
+
+            for(var c = 0; c < idsTrei.length; c++) {
+                if(c > 0) {
+                    idsStr += "x";
+                }
+                idsStr += idsTrei[c];
+            }
+
+            var url = "idVol=" + idVol + "&idsTrei=" + idsStr;
+
+            // Iniciar uma requisição
+            xmlreq.open("GET", "options_edit_trei.php?" + url, true);
+
+            // Atribui uma função para ser executada sempre que houver uma mudança de ado
+            xmlreq.onreadystatechange = function(){
+                // Verifica se foi concluído com sucesso e a conexão fechada (readyState=4)
+                if (xmlreq.readyState == 4) {
+
+                    // Verifica se o arquivo foi encontrado com sucesso
+                    if (xmlreq.status == 200) {
+                        optionsSelectTrei = xmlreq.responseText;
+                        window.alert(optionsSelectTrei);
+                        
+                        document.getElementById("treiEdit").innerHTML = optionsSelectTrei;
                     }else{
                         let x = "Erro: " + xmlreq.statusText;
                         window.alert(x);
@@ -365,6 +428,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <?php $con->close();?>
 </body>
 
 </html>
