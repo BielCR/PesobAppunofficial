@@ -78,7 +78,7 @@
                                     <button type="button" class="close" data-dismiss="modal">x</button>
                                 </div>
                                 <div class="modal-body bg-white">
-                                    <img style="width: 50%;" class="rounded shadow-lg border mx-auto d-block img-fluid" src="https://i.pinimg.com/originals/24/5a/e1/245ae17922e87954167a22bb77addf89.jpg" alt="foto do voluntário" title="Foto do Voluntário">
+                                    <img style="width: 50%;" class="rounded shadow-lg border mx-auto d-block img-fluid" src="https://i.imgur.com/eQDusBx.jpg" alt="foto do voluntário" title="Foto do Voluntário">
                                     <br>
                                     <form action="" method="GET">
                                         <div class="form-group">

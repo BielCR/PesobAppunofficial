@@ -88,7 +88,7 @@
             <div class="col-md-4">
                 <!--A pre-visualização da tela no app-->
                 <h4>Pre-visualização</h4>
-                <img class="rounded shadow-lg border mx-auto d-block img-fluid" src="https://i.imgur.com/ZldJXpD.png" alt="prototipoTelaInfo" title="Pre-visualização da Tela">
+                <img class="rounded shadow-lg border mx-auto d-block img-fluid" src="https://i.imgur.com/pcZhUM0.png" alt="prototipoTelaInfo" title="Pre-visualização da Tela">
                 <button type="button" class="btn btn-success mt-3 ml-auto d-block" data-toggle="modal" data-target="#modalTela">Expandir</button>
                 <!--MODAL PRE-VISUALIZAÇÃO-->
                 <div class="modal fade" id="modalTela">
