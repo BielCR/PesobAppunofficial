@@ -1,5 +1,5 @@
 <?php
-    include "../conexao.php";
+    //include "../conexao.php";
 
     $SQL = "SELECT * FROM voluntario WHERE idVoluntario > 0 ORDER BY nomeVoluntario";
     $result = $con->query($SQL);
@@ -22,5 +22,5 @@
     }
     echo "</table>";
 
-    $con->close();
+    //$con->close();
 ?>

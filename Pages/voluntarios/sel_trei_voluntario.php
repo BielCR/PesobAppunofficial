@@ -19,13 +19,13 @@
                 if($primeiro) {
                     $primeiro = false;
                 } else {
-                    $treinamentos .= "; ";
+                    $treinamentos .= "|";
                 }
-                $treinamentos .= $row['nomeTreinamento'];
+                $treinamentos .= $row['idTrei'] . "|" . $row['nomeTreinamento'];
             }
             echo $treinamentos;
         } else {
-            echo "Não possui treinamento";
+            echo "0|Não possui treinamento";
         }
 
         $con->close();
