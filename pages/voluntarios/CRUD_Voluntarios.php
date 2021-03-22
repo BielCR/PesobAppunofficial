@@ -292,8 +292,9 @@
             var nomeForm = document.getElementById('infoNome');
             var emailForm = document.getElementById('infoEmail');
             var senhaForm = document.getElementById('infoSenha');
+            var treiSelect = document.getElementById('treiEdit');
 
-            var dados = `infoId=${voluntarioSelecionado[0]}&infoNome=${nomeForm.value}&infoEmail=${emailForm.value}&infoSenha=${senhaForm.value}`;
+            var dados = `infoId=${voluntarioSelecionado[0]}&infoNome=${nomeForm.value}&infoEmail=${emailForm.value}&infoSenha=${senhaForm.value}&infoTrei=${treiSelect.value}`;
 
             //Se nao houve modificacao de senha
             if(senhaForm.value == voluntarioSelecionado[3]) {
