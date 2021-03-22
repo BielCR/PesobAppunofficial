@@ -31,7 +31,7 @@
 
     if($result->num_rows > 0) {
         //Tem treinamentos a serem aprendidos
-        $strOptions = "";
+        $strOptions = "<option value='0'>Selecione um treinamento para adicionar</option>";
         while($row = $result->fetch_assoc()) {
             $strOptions .= "<option value='" . $row['idTreinamento'] . "'>" . $row['nomeTreinamento'] . "</option>";
         }
